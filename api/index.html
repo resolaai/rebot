@@ -108,8 +108,10 @@
 <p><strong>■ エンドポイント </strong>  </p>
 <pre><code>https://rebot.jp/api/{app_unique_id}/{command}
 </code></pre>
-<p>{app_unique_id}は、アプリケーション詳細画面にて確認できます。<br />
-{command}は、各APIの機能を表します。      </p>
+<ul>
+<li>{app_unique_id}は、「アプリケーション識別ID」です。アプリケーション詳細画面にて確認できます。  </li>
+<li>{command}は、各APIの機能を表します。      </li>
+</ul>
 <hr />
 <h2 id="api">アクション登録API</h2>
 <pre><code>開発中
@@ -179,7 +181,6 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <tr><td>text</td><td>ユーザの会話</td></tr>
 <tr><td>datetime</td><td>日時</td></tr>
 <tr><td>action</td><td>認識したアクション名</td></tr>
-<tr><td>entity</td><td>エンティティ名と情報</td></tr>
 <tr><td>state</td><td>ステート名</td></tr>
 <tr><td>response</td><td>応答内容</td></tr>
 <tr><td>result_json</td><td>システムで解析した情報<br/>詳細はログ詳細画面を確認。</td></tr>

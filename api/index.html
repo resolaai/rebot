@@ -150,17 +150,19 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <p>以下の値を持つJSONオブジェクトのリスト</p>
 <table>
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>action</td><td>○</td><td>アクション名</td></tr>
+<tr><td>action</td><td></td><td>アクション名<br/>指定されない場合は自動でアクション名が採番される</td></tr>
 <tr><td>text</td><td></td><td>ユーザが発言する内容</td></tr>
 <tr><td>response_text</td><td></td><td>返答内容</td></tr>
 <tr><td>replies</td><td></td><td>返答内容にボタンを含める場合のボタン<br/>複数ある場合はカンマ区切りで指定</td></tr>
+<tr><td>update_type</td><td></td><td>更新タイプ<br/>1:追加（既にアクション名が存在する場合はスキップ）<br/>2:部分追加（既にアクションが存在する場合は、text及びresponse_text, repliesのみを追加する）<br/>3:置き換え（既にアクション名が存在する場合は置き換え、存在しない場合は追加）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
 </table>
 
 <p><strong>■ リクエストボディの例</strong>    </p>
 <pre><code>[
-  {'action':'action1', 'text':'こんにちは', 'response_text':'こんにちは〜、お元気ですか？', 'replies':'はい,いいえ'},
-  {'action':'action1', 'response_text':'こんにちは:)'},
-  {'action':'action2', 'text':'こんばんは', 'response_text':'こんばんは！！'}
+  {'update_type':'1', 'action':'action1', 'text':'こんにちは', 'response_text':'こんにちは〜、お元気ですか？', 'replies':'はい,いいえ'},
+  {'update_type':'1', 'action':'action1', 'response_text':'こんにちは:)'},
+  {'action':'action2', 'text':'こんばんは', 'response_text':'こんばんは〜'},
+  {'text':'おはよう', 'response_text':'おはようございます〜'},
 ]
 </code></pre>
 <h3 id="_3">レスポンス</h3>

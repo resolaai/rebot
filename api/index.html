@@ -149,25 +149,32 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <p><strong>■ リクエストボディ </strong></p>
 <p>以下の値を持つJSONオブジェクトのリスト</p>
 <table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>action</td><td></td><td>アクション名<br/>指定されない場合は自動でアクション名が採番される</td></tr>
-<tr><td>text</td><td></td><td>ユーザが発言する内容</td></tr>
-<tr><td>response_text</td><td></td><td>返答内容</td></tr>
-<tr><td>replies</td><td></td><td>返答内容にボタンを含める場合のボタン<br/>複数ある場合はカンマ区切りで指定</td></tr>
-<tr><td>update_type</td><td></td><td>更新タイプ<br/>1:追加（既にアクション名が存在する場合はスキップ）<br/>2:部分追加（既にアクションが存在する場合は、text及びresponse_text, repliesのみを追加する）<br/>3:置き換え（既にアクション名が存在する場合は置き換え、存在しない場合は追加）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
+<tr><th colspan="2">パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td colspan="2">update_type</td><td></td><td>更新タイプ<br/>1:新規追加（既にアクション名が存在する場合はスキップ）<br/>2:部分追加（既にアクションが存在する場合は、text及びresponse_text, repliesのみを追加する）<br/>3:置き換え（既にアクション名が存在する場合は置き換え、存在しない場合は追加）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
+<tr><td colspan="2">action</td><td></td><td>アクション名<br/>指定されない場合は自動でアクション名が採番される</td></tr>
+<tr><td colspan="2">texts</td><td></td><td>ユーザが発言する内容のリスト<br/>["発言1","発言2"]</td></tr>
+<tr><td colspan="2">responses</td><td></td><td>返答内容のリスト<br/>以下のJSONオブジェクトを持つリスト</td></tr>
+<tr><td></td><td>response_text</td><td>○</td><td>返答内容</td></tr>
+<tr><td></td><td>replies</td><td></td><td>返答内容にボタンを含める場合のボタン<br/>複数ある場合はカンマ区切りで指定</td></tr>
 </table>
 
 <p><strong>■ リクエストボディの例</strong>    </p>
 <pre><code>[
-  {'update_type':'1', 'action':'action1', 'text':'こんにちは', 'response_text':'こんにちは〜、お元気ですか？', 'replies':'はい,いいえ'},
-  {'update_type':'1', 'action':'action1', 'response_text':'こんにちは:)'},
-  {'action':'action2', 'text':'こんばんは', 'response_text':'こんばんは〜'},
-  {'text':'おはよう', 'response_text':'おはようございます〜'},
+  {"update_type":"1", "action":"action1", "texts":["こんにちは"], "responses":[{"response_text":"こんにちは〜、お元気ですか？", "replies":["はい","いいえ"]}, {"response_text": "こんにちは"}]},
+  {"update_type":"2", "action":"action2", "texts":["こんばんは","お疲れ様"], "responses": [{"response_text":"こんばんは〜"}]},
+  {"update_type":"3", "action":"action3", "texts":["おはよう"], "responses":[{"response_text": "おはようございます"}]},
+  {"texts":["自動アクション採番"]},
+  {"texts":["自動アクション採番２"], "responses":[{"response_text":"自動でアクションを採番したよ"}]}
 ]
 </code></pre>
 <h3 id="_3">レスポンス</h3>
-<pre><code>TBD
-</code></pre>
+<table>
+<tr><th>項目</th><th>説明</th></tr>
+<tr><td>result</td><td>"OK"</td></tr>
+<tr><td>updated</td><td>更新されたアクションのリスト<br/>["action2", "action3"]</td></tr>
+<tr><td>skipped</td><td>スキップされたアクションのリスト<br/>["action1"]</td></tr>
+</table>
+
 <hr />
 <h2 id="api_1">ログ取得API</h2>
 <p>検索条件を指定して、ログデータの一覧を取得します。  </p>

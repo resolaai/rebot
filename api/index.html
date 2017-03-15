@@ -147,7 +147,7 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <p>以下の値を持つJSONオブジェクトのリスト</p>
 <table>
 <tr><th colspan="2">パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td colspan="2">update_type</td><td></td><td>更新タイプ<br/>1:新規追加（既にアクション名が存在する場合はスキップ）<br/>2:部分追加（既にアクションが存在する場合は、text及びresponse_text, repliesのみを追加する）<br/>3:置き換え（既にアクション名が存在する場合は置き換え、存在しない場合は追加）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
+<tr><td colspan="2">update_type</td><td></td><td>更新タイプ<br/>1:新規追加（既にアクション名が存在する場合はスキップ）<br/>2:部分追加（既にアクションが存在する場合は、text及びresponse_text, repliesのみを追加する）<br/>3:置き換え（既にアクション名が存在する場合は置き換え、存在しない場合は追加）<br/>4:削除（アクション名を指定して削除する）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
 <tr><td colspan="2">action</td><td></td><td>アクション名<br/>指定されない場合は自動でアクション名が採番される</td></tr>
 <tr><td colspan="2">texts</td><td></td><td>ユーザが発言する内容のリスト<br/>["発言1","発言2"]</td></tr>
 <tr><td colspan="2">responses</td><td></td><td>返答内容のリスト<br/>以下のJSONオブジェクトを持つリスト</td></tr>

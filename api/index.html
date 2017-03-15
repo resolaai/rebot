@@ -160,6 +160,7 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
   {"update_type":"1", "action":"action1", "texts":["こんにちは"], "responses":[{"response_text":"こんにちは〜、お元気ですか？", "replies":["はい","いいえ"]}, {"response_text": "こんにちは"}]},
   {"update_type":"2", "action":"action2", "texts":["こんばんは","お疲れ様"], "responses": [{"response_text":"こんばんは〜"}]},
   {"update_type":"3", "action":"action3", "texts":["おはよう"], "responses":[{"response_text": "おはようございます"}]},
+  {"update_type":"4", "action":"action4"},
   {"texts":["自動アクション採番"]},
   {"texts":["自動アクション採番２"], "responses":[{"response_text":"自動でアクションを採番したよ"}]}
 ]
@@ -169,6 +170,7 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <tr><th>項目</th><th>説明</th></tr>
 <tr><td>result</td><td>"OK"</td></tr>
 <tr><td>updated</td><td>更新されたアクションのリスト<br/>["action2", "action3"]</td></tr>
+<tr><td>deleted</td><td>削除されたアクションのリスト<br/>["action4"]</td></tr>
 <tr><td>skipped</td><td>スキップされたアクションのリスト<br/>["action1"]</td></tr>
 </table>
 

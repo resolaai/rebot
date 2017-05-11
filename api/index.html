@@ -152,6 +152,7 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <p><strong>■ リクエストパラメータ </strong></p>
 <table>
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td>page</td><td></td><td>複数ページ存在する場合にページ番号を指定する<br/>デフォルトは1</td></tr>
 <tr><td>action</td><td></td><td>アクション名（前方一致）で検索を行う</td></tr>
 <tr><td>text</td><td></td><td>ユーザが話しかける会話文で検索を行う<br/>意図が近い順に表示する</td></tr>
 <tr><td>response</td><td></td><td>応答メッセージを部分一致で検索する</td></tr>
@@ -161,10 +162,11 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <table>
 <tr><th colspan="2">項目</th><th>説明</th></tr>
 <tr><td colspan="2">result</td><td>"OK"</td></tr>
+<tr><td colspan="2">last_page</td><td>ページ数</td></tr>
 <tr><td colspan="2">actions</td><td>アクションのリスト</td></tr>
 <tr><td></td><td>action</td><td>アクション名</td></tr>
-<tr><td></td><td>text</td><td>ユーザが話しかける会話文</td></tr>
-<tr><td></td><td>response</td><td>応答メッセージ</td></tr>
+<tr><td></td><td>texts</td><td>ユーザが話しかける会話文のリスト</td></tr>
+<tr><td></td><td>responses</td><td>応答メッセージのリスト</td></tr>
 </table>
 
 <hr />
@@ -221,16 +223,22 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <p><strong>■ リクエストパラメータ </strong></p>
 <table>
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td>page</td><td></td><td>複数ページ存在する場合にページ番号を指定する<br/>デフォルトは1</td></tr>
 <tr><td>entity</td><td></td><td>エンティティ名（前方一致）で検索を行う</td></tr>
 </table>
 
 <h3 id="_7">レスポンス</h3>
 <table>
-<tr><th colspan="2">項目</th><th>説明</th></tr>
-<tr><td colspan="2">result</td><td>"OK"</td></tr>
-<tr><td colspan="2">entities</td><td>エンティティのリスト</td></tr>
-<tr><td></td><td>entity</td><td>エンティティ名</td></tr>
-<tr><td></td><td>description</td><td>エンティティの説明</td></tr>
+<tr><th colspan="3">項目</th><th>説明</th></tr>
+<tr><td colspan="3">result</td><td>"OK"</td></tr>
+<tr><td colspan="3">last_page</td><td>ページ数</td></tr>
+<tr><td colspan="3">entities</td><td>エンティティのリスト</td></tr>
+<tr><td></td><td colspan="2">entity</td><td>エンティティ名</td></tr>
+<tr><td></td><td colspan="2">description</td><td>エンティティの説明</td></tr>
+<tr><td></td><td colspan="2">entity_values</td><td>エンティティ値のリスト</td></tr>
+<tr><td></td><td></td><td>entity_value</td><td>エンティティの値</td></tr>
+<tr><td></td><td></td><td>synonyms</td><td>エンティティの同意語のリスト</td></tr>
+<tr><td></td><td></td><td>attribute</td><td>エエンティティの属性値<br/>JSON形式の文字列</td></tr>
 </table>
 
 <hr />
@@ -260,7 +268,7 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <pre><code>[
   {"update_type":"1", "entity":"entity1", "description":"エンティティ１", "entity_values":[{"entity_value":"エンティティ1-1", "synonyms":["1-1","エンティティー1-1"]}, {"entity_value":"エンティティ1-2", "synonyms":["1-2","エンティティー1-2"]}]},
   {"update_type":"2", "entity":"entity2", "entity_values":[{"entity_value":"エンティティ2-2"}]},
-  {"update_type":"2", "entity":"entity3", "entity_values":[{"entity_value":"エンティティ3-1", "attribute":"{'code':'5'}"},{"entity_value":"エンティティ3-2", "attribute":"{'code':'8'}"}]},
+  {"update_type":"3", "entity":"entity3", "entity_values":[{"entity_value":"エンティティ3-1", "attribute":"{'code':'5'}"},{"entity_value":"エンティティ3-2", "attribute":"{'code':'8'}"}]},
   {"update_type":"4", "entity":"entity4"},
   {"entity_values":[{"entity_value":"自動採番1"}, {"entity_value":"自動採番2"}]}
 ]

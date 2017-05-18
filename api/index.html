@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>API - Rebotマニュアル</title>
+  <title>API概要 - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "API";
+    var mkdocs_page_name = "API\u6982\u8981";
     var mkdocs_page_input_path = "api.md";
     var mkdocs_page_url = "/api/";
   </script>
@@ -54,36 +54,60 @@
 <li>
           
             <li>
+    <ul class="subnav">
+    <li><span>Rebotヘルプ</span></li>
+
+        
+            
     <li class="toctree-l1 ">
         <a class="" href="../account/">アカウント</a>
         
     </li>
+
+        
+    </ul>
 <li>
           
             <li>
+    <ul class="subnav">
+    <li><span>API</span></li>
+
+        
+            
     <li class="toctree-l1 current">
-        <a class="current" href="./">API</a>
+        <a class="current" href="./">API概要</a>
         
             <ul>
             
                 <li class="toctree-l3"><a href="#rebot-developer-api">Rebot Developer API</a></li>
                 
+                    <li><a class="toctree-l4" href="#api">API利用フロー</a></li>
+                
                     <li><a class="toctree-l4" href="#_1">共通仕様</a></li>
                 
-                    <li><a class="toctree-l4" href="#api">アクション取得API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アクション登録API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_2">エンティティ取得API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_3">エンティティ登録API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_4">ログ取得API</a></li>
+                    <li><a class="toctree-l4" href="#api_1">ログインAPI</a></li>
                 
             
             </ul>
         
     </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_app/">アプリケーション関連API</a>
+        
+    </li>
+
+        
+    </ul>
 <li>
           
         </ul>
@@ -107,8 +131,12 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
+        
+          <li>API &raquo;</li>
+        
+      
     
-    <li>API</li>
+    <li>API概要</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -119,19 +147,25 @@
             <div class="section">
               
                 <h1 id="rebot-developer-api">Rebot Developer API</h1>
-<p>アプリケーション詳細画面にて、「APIアクセス」を許可することで、API経由でのアクセスが可能となります。  </p>
+<p>ログインAPIを通して取得した<code>APIアクセスキー</code>を使うことで、API経由で各種操作を行うことができるようになります。</p>
+<h2 id="api">API利用フロー</h2>
+<ol>
+<li><a href="#api_1">ログインAPI</a>でユーザ認証を行う</li>
+<li>サーバ側で<code>APIアクセスキー</code>を発行し、返却する</li>
+<li>クライアント側で<code>APIアクセスキー</code>を保存し、<a href="#_1">共通仕様</a>の通り<code>APIアクセスキー</code>を使い各種APIを利用する</li>
+</ol>
+<hr />
 <h2 id="_1">共通仕様</h2>
 <p><strong>■ エンドポイント </strong>  </p>
-<pre><code>https://rebot.jp/api/{app_unique_id}/{command}
+<pre><code>https://rebot.jp/api/{command}
 </code></pre>
 <ul>
-<li>{app_unique_id}は、「アプリケーション識別ID」です。アプリケーション詳細画面にて確認できます。  </li>
 <li>{command}は、各APIの機能を表します。      </li>
 <li>アクセスはhttpsのみ可能です。</li>
 </ul>
 <p><strong>■ リクエストヘッダ</strong>  </p>
-<p>APIコールする際は、リクエストヘッダへAPIアクセスキーを設定する必要があります。<br />
-APIアクセスキーは、アプリケーション詳細画面にて「APIアクセス」を許可することで取得できます。<br />
+<p>APIコールする際は、リクエストヘッダへ<code>APIアクセスキー</code>を設定する必要があります。<br />
+<code>APIアクセスキー</code>は、ログインAPIにて認証を行うことで取得できます。<br />
 APIアクセスキーが正しくセットされていない場合は、[400 Bad Request]を返します。  </p>
 <table>
 <tr>
@@ -140,218 +174,60 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 </tr>
 <tr>
 <td>x-access-key</td>
-<td>APIアクセスキー。</td>
+<td>APIアクセスキー</td>
+</tr>
+<tr>
+<td>content-type</td>
+<td>application/json</td>
 </tr>
 </table>
 
 <p><strong>■ レスポンス</strong>  </p>
-<p>JSON形式で返却します。</p>
+<p>JSON形式で返却します。　</p>
+<table>
+<tr><th>項目</th><th>説明</th></tr>
+<tr><td>result</td><td>API処理結果<br/>0  :成功<br/>1 :不正なデータ（入力チェックエラー）<br/>98: APIアクセスキーエラー<br/>99:不正なリクエスト</td></tr>
+<tr><td>data</td><td>成功時に処理結果データを格納</td></tr>
+<tr><td>message</td><td>オプション<br/>エラー時のメッセージなど</td></tr>
+<tr><td>error_fields</td><td>オプション<br/>入力チェックエラー時の項目とエラーメッセージのリスト<br/>例）<br/>[{'field':'email', 'message':'正しいメール形式ではありません'}]</td></tr>
+</table>
+
+<p><strong>※ 以下のAPI仕様書には、特に指定が無い場合は、<code>data</code>項目以下のみの定義を記述しています。</strong></p>
 <hr />
-<h2 id="api">アクション取得API</h2>
-<p>検索条件を指定して、アクション一覧の取得を行います。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/actions
+<h2 id="api_1">ログインAPI</h2>
+<p><strong>■ エンドポイント </strong>  </p>
+<pre><code>/api/login
 </code></pre>
+<ul>
+<li>アクセスはhttpsのみ可能です。</li>
+</ul>
 <h3 id="_2">リクエスト</h3>
 <p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>GET
+<pre><code>POST
 </code></pre>
 <p><strong>■ リクエストパラメータ </strong></p>
 <table>
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>page</td><td></td><td>複数ページ存在する場合にページ番号を指定する<br/>デフォルトは1</td></tr>
-<tr><td>action</td><td></td><td>アクション名（前方一致）で検索を行う</td></tr>
-<tr><td>text</td><td></td><td>ユーザが話しかける会話文で検索を行う<br/>意図が近い順に表示する</td></tr>
-<tr><td>response</td><td></td><td>応答メッセージを部分一致で検索する</td></tr>
+<tr><td>id</td><td>○</td><td>管理画面へのログインID</tr>
+<tr><td>password</td><td>○</td><td>ログインパスワード</td></tr>
 </table>
 
-<ul>
-<li>action、text、responseは複数指定することはできません</li>
-</ul>
 <h3 id="_3">レスポンス</h3>
-<table>
-<tr><th colspan="2">項目</th><th>説明</th></tr>
-<tr><td colspan="2">result</td><td>"OK"</td></tr>
-<tr><td colspan="2">last_page</td><td>ページ数</td></tr>
-<tr><td colspan="2">actions</td><td>アクションのリスト</td></tr>
-<tr><td></td><td>action</td><td>アクション名</td></tr>
-<tr><td></td><td>texts</td><td>ユーザが話しかける会話文のリスト</td></tr>
-<tr><td></td><td>responses</td><td>応答メッセージのリスト</td></tr>
-</table>
-
-<hr />
-<h2 id="api_1">アクション登録API</h2>
-<p>以下のJSON形式のリストにてアクションを受け取り、アクションの登録または更新を行います。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/actions
-</code></pre>
-<h3 id="_4">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
-</code></pre>
-<p><strong>■ リクエストボディ </strong></p>
-<p>以下の値を持つJSONオブジェクトのリスト</p>
-<table>
-<tr><th colspan="2">パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td colspan="2">update_type</td><td></td><td>更新タイプ<br/>1:新規追加（既にアクション名が存在する場合はスキップ）<br/>2:部分追加（既にアクションが存在する場合は、text及びresponse_text, repliesのみを追加する）<br/>3:置き換え（既にアクション名が存在する場合は置き換え、存在しない場合は追加）<br/>4:削除（アクション名を指定して削除する）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
-<tr><td colspan="2">action</td><td></td><td>アクション名<br/>指定されない場合は自動でアクション名が採番される</td></tr>
-<tr><td colspan="2">texts</td><td></td><td>ユーザが発言する内容のリスト<br/>["発言1","発言2"]</td></tr>
-<tr><td colspan="2">responses</td><td></td><td>返答内容のリスト<br/>以下のJSONオブジェクトを持つリスト</td></tr>
-<tr><td></td><td>response_text</td><td>○</td><td>返答内容</td></tr>
-<tr><td></td><td>replies</td><td></td><td>返答内容にボタンを含める場合のボタン名のリスト</td></tr>
-</table>
-
-<p><strong>■ リクエストボディの例</strong>    </p>
-<pre><code>[
-  {"update_type":"1", "action":"action1", "texts":["こんにちは"], "responses":[{"response_text":"こんにちは〜、お元気ですか？", "replies":["はい","いいえ"]}, {"response_text": "こんにちは"}]},
-  {"update_type":"2", "action":"action2", "texts":["こんばんは","お疲れ様"], "responses": [{"response_text":"こんばんは〜"}]},
-  {"update_type":"3", "action":"action3", "texts":["おはよう"], "responses":[{"response_text": "おはようございます"}]},
-  {"update_type":"4", "action":"action4"},
-  {"texts":["自動アクション採番"]},
-  {"texts":["自動アクション採番２"], "responses":[{"response_text":"自動でアクションを採番したよ"}]}
-]
-</code></pre>
-<h3 id="_5">レスポンス</h3>
+<p>以下の項目を持つオブジェクト
 <table>
 <tr><th>項目</th><th>説明</th></tr>
-<tr><td>result</td><td>"OK"</td></tr>
-<tr><td>updated</td><td>更新されたアクションのリスト<br/>["action2", "action3"]</td></tr>
-<tr><td>deleted</td><td>削除されたアクションのリスト<br/>["action4"]</td></tr>
-<tr><td>skipped</td><td>スキップされたアクションのリスト<br/>["action1"]</td></tr>
-</table>
-
+<tr><td>success</td><td>1:ログイン成功<br/>0:ログイン失敗</td></tr>
+<tr><td>access_token</td><td>ログイン成功時に設定される<br/>APIアクセスキー<br/>ログインAPI以外の各種APIを利用する際に利用する</td></tr>
+</table></p>
 <hr />
-<h2 id="api_2">エンティティ取得API</h2>
-<p>検索条件を指定して、アクション一覧の取得を行います。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/entities
-</code></pre>
-<h3 id="_6">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>GET
-</code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
-<table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>page</td><td></td><td>複数ページ存在する場合にページ番号を指定する<br/>デフォルトは1</td></tr>
-<tr><td>entity</td><td></td><td>エンティティ名（前方一致）で検索を行う</td></tr>
-</table>
-
-<h3 id="_7">レスポンス</h3>
-<table>
-<tr><th colspan="3">項目</th><th>説明</th></tr>
-<tr><td colspan="3">result</td><td>"OK"</td></tr>
-<tr><td colspan="3">last_page</td><td>ページ数</td></tr>
-<tr><td colspan="3">entities</td><td>エンティティのリスト</td></tr>
-<tr><td></td><td colspan="2">entity</td><td>エンティティ名</td></tr>
-<tr><td></td><td colspan="2">description</td><td>エンティティの説明</td></tr>
-<tr><td></td><td colspan="2">entity_values</td><td>エンティティ値のリスト</td></tr>
-<tr><td></td><td></td><td>entity_value</td><td>エンティティの値</td></tr>
-<tr><td></td><td></td><td>synonyms</td><td>エンティティの同意語のリスト</td></tr>
-<tr><td></td><td></td><td>attribute</td><td>エエンティティの属性値<br/>JSON形式の文字列</td></tr>
-</table>
-
-<hr />
-<h2 id="api_3">エンティティ登録API</h2>
-<p>以下のJSON形式のリストにてアクションを受け取り、アクションの登録または更新を行います。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/entities
-</code></pre>
-<h3 id="_8">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
-</code></pre>
-<p><strong>■ リクエストボディ </strong></p>
-<p>以下の値を持つJSONオブジェクトのリスト</p>
-<table>
-<tr><th colspan="2">パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td colspan="2">update_type</td><td></td><td>更新タイプ<br/>1:新規追加（既にエンティティ名が存在する場合はスキップ）<br/>2:部分追加（既にエンンティティが存在する場合は、エンティティの値のみを追加する）<br/>3:置き換え（既にエンティティ名が存在する場合は置き換え、存在しない場合は追加）<br/>4:削除（エンティティ名を指定して削除する）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
-<tr><td colspan="2">entity</td><td></td><td>エンティティ名<br/>指定されない場合は自動でエンティティ名が採番される</td></tr>
-<tr><td colspan="2">description</td><td></td><td>エンティティの説明</td></tr>
-<tr><td colspan="2">entity_values</td><td></td><td>エンティティ値のリスト<br/>以下のJSONオブジェクトを持つリスト</td></tr>
-<tr><td></td><td>entity_value</td><td>○</td><td>エンティティの値</td></tr>
-<tr><td></td><td>synonyms</td><td></td><td>エンティティの同意語のリスト</td></tr>
-<tr><td></td><td>attribute</td><td></td><td>エンティティの属性値<br/>JSON形式の文字列で指定し、任意の値を持たせることが可能</td></tr>
-</table>
-
-<p><strong>■ リクエストボディの例</strong>    </p>
-<pre><code>[
-  {"update_type":"1", "entity":"entity1", "description":"エンティティ１", "entity_values":[{"entity_value":"エンティティ1-1", "synonyms":["1-1","エンティティー1-1"]}, {"entity_value":"エンティティ1-2", "synonyms":["1-2","エンティティー1-2"]}]},
-  {"update_type":"2", "entity":"entity2", "entity_values":[{"entity_value":"エンティティ2-2"}]},
-  {"update_type":"3", "entity":"entity3", "entity_values":[{"entity_value":"エンティティ3-1", "attribute":"{'code':'5'}"},{"entity_value":"エンティティ3-2", "attribute":"{'code':'8'}"}]},
-  {"update_type":"4", "entity":"entity4"},
-  {"entity_values":[{"entity_value":"自動採番1"}, {"entity_value":"自動採番2"}]}
-]
-</code></pre>
-<h3 id="_9">レスポンス</h3>
-<table>
-<tr><th>項目</th><th>説明</th></tr>
-<tr><td>result</td><td>"OK"</td></tr>
-<tr><td>updated</td><td>更新されたエンティティのリスト<br/>["action2", "action3"]</td></tr>
-<tr><td>deleted</td><td>削除されたエンティティのリスト<br/>["action4"]</td></tr>
-<tr><td>skipped</td><td>スキップされたエンティティのリスト<br/>["action1"]</td></tr>
-</table>
-
-<hr />
-<h2 id="api_4">ログ取得API</h2>
-<p>検索条件を指定して、ログデータの一覧を取得します。  </p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/logs
-</code></pre>
-<h3 id="_10">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>GET
-</code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
-<table>
-<tr>
-<th>パラメータ</th>
-<th>必須</th>
-<th>説明</th>
-</tr>
-<tr>
-<td>date_from</td>
-<td></td>
-<td>開始日付（yyyy-mm-dd)<br/>値が無い場合は今日日付で検索</td>
-</tr>
-<tr>
-<td>date_to</td>
-<td></td>
-<td>終了日付（yyyy-mm-dd)<br/>値が無い場合は今日日付で検索</td>
-</tr>
-<tr>
-<td>action</td>
-<td></td>
-<td>アクション名を前方一致で検索</td>
-</tr>
-<tr>
-<td>state</td>
-<td></td>
-<td>ステート名を前方一致で検索</td>
-</tr>
-</table>
-
-<p><strong>■ 例</strong>    </p>
-<pre><code>https://rebot.jp/api/xxxxxxxxxxxxxx/logs?date_from=2017-01-01&amp;date_to=2017-03-31&amp;action=sys
-</code></pre>
-<h3 id="_11">レスポンス</h3>
-<p>以下の情報を含むログ情報をリストで返します。  </p>
-<table>
-<tr><th>項目</th><th>説明</th></tr>
-<tr><td>user</td><td>ユーザを一意に識別するID</td></tr>
-<tr><td>text</td><td>ユーザの会話</td></tr>
-<tr><td>datetime</td><td>日時</td></tr>
-<tr><td>action</td><td>認識したアクション名</td></tr>
-<tr><td>state</td><td>ステート名</td></tr>
-<tr><td>response</td><td>応答内容</td></tr>
-<tr><td>result_json</td><td>システムで解析した情報<br/>詳細はログ詳細画面を確認。</td></tr>
-</table>
               
             </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api_account/" class="btn btn-neutral float-right" title="アカウント関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href="../account/" class="btn btn-neutral" title="アカウント"><span class="icon icon-circle-arrow-left"></span> Previous</a>
@@ -382,6 +258,8 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
       
         <span><a href="../account/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../api_account/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

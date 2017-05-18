@@ -4,25 +4,41 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-05-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
+        
     <url>
      <loc>/account/</loc>
-     <lastmod>2017-05-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
     
 
     
+        
     <url>
      <loc>/api/</loc>
-     <lastmod>2017-05-11</lastmod>
+     <lastmod>2017-05-18</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
+    <url>
+     <loc>/api_account/</loc>
+     <lastmod>2017-05-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/api_app/</loc>
+     <lastmod>2017-05-18</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>

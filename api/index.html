@@ -107,6 +107,27 @@
     </li>
 
         
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_action/">アクション関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_entity/">エンティティ関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_log/">ログ関連API</a>
+        
+    </li>
+
+        
     </ul>
 <li>
           
@@ -186,7 +207,7 @@ APIアクセスキーが正しくセットされていない場合は、[400 Bad
 <p>JSON形式で返却します。　</p>
 <table>
 <tr><th>項目</th><th>説明</th></tr>
-<tr><td>result</td><td>API処理結果<br/>0  :成功<br/>1 :不正なデータ（入力チェックエラー）<br/>98: APIアクセスキーエラー<br/>99:不正なリクエスト</td></tr>
+<tr><td>code</td><td>API処理結果<br/>0  :成功<br/>1 :不正なデータ（入力チェックエラー）<br/>97: 不正なリクエスト<br/>98: APIアクセスキーエラー<br/>99:サーバーエラー</td></tr>
 <tr><td>data</td><td>成功時に処理結果データを格納</td></tr>
 <tr><td>message</td><td>オプション<br/>エラー時のメッセージなど</td></tr>
 <tr><td>error_fields</td><td>オプション<br/>入力チェックエラー時の項目とエラーメッセージのリスト<br/>例）<br/>[{'field':'email', 'message':'正しいメール形式ではありません'}]</td></tr>

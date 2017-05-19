@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>アクション関連API - Rebotマニュアル</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u30a2\u30af\u30b7\u30e7\u30f3\u95a2\u9023API";
+    var mkdocs_page_input_path = "api_action.md";
+    var mkdocs_page_url = "/api_action/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rebotマニュアル</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">HOME</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Rebotヘルプ</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../account/">アカウント</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>API</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/">API概要</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_app/">アプリケーション関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">アクション関連API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#api">API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_1">アクション取得API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_2">アクション登録API</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_entity/">エンティティ関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_log/">ログ関連API</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rebotマニュアル</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API &raquo;</li>
+        
+      
+    
+    <li>アクション関連API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="api">API</h1>
+<h2 id="api_1">アクション取得API</h2>
+<p>検索条件を指定して、{unique_id}で指定したアプリケーションのアクション一覧の取得を行います。</p>
+<p><strong>■ エンドポイント</strong>    </p>
+<pre><code>/apps/{unique_id}/actions
+</code></pre>
+<h3 id="_1">リクエスト</h3>
+<p><strong>■ リクエストメソッド </strong>  </p>
+<pre><code>GET
+</code></pre>
+<p><strong>■ リクエストパラメータ </strong></p>
+<table>
+<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td>page</td><td></td><td>複数ページ存在する場合にページ番号を指定する<br/>デフォルトは1</td></tr>
+<tr><td>action</td><td></td><td>アクション名（前方一致）で検索を行う</td></tr>
+<tr><td>text</td><td></td><td>ユーザが話しかける会話文で検索を行う<br/>意図が近い順に表示する</td></tr>
+<tr><td>response</td><td></td><td>応答メッセージを部分一致で検索する</td></tr>
+</table>
+
+<ul>
+<li>action、text、responseは複数指定することはできません</li>
+</ul>
+<h3 id="_2">レスポンス</h3>
+<table>
+<tr><th colspan="2">項目</th><th>説明</th></tr>
+<tr><td colspan="2">last_page</td><td>ページ数</td></tr>
+<tr><td colspan="2">actions</td><td>アクションのリスト</td></tr>
+<tr><td></td><td>action</td><td>アクション名</td></tr>
+<tr><td></td><td>texts</td><td>ユーザが話しかける会話文のリスト</td></tr>
+<tr><td></td><td>responses</td><td>応答メッセージのリスト</td></tr>
+</table>
+
+<hr />
+<h2 id="api_2">アクション登録API</h2>
+<p>以下のJSON形式のリストにてアクションを受け取り、{unique_id}で指定したアプリケーションへアクションの登録または更新を行います。</p>
+<p><strong>■ エンドポイント</strong>    </p>
+<pre><code>/apps/{unique_id}/actions
+</code></pre>
+<h3 id="_3">リクエスト</h3>
+<p><strong>■ リクエストメソッド </strong>  </p>
+<pre><code>POST
+</code></pre>
+<p><strong>■ リクエストボディ </strong></p>
+<p>以下の値を持つJSONオブジェクトのリスト</p>
+<table>
+<tr><th colspan="2">パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td colspan="2">update_type</td><td></td><td>更新タイプ<br/>1:新規追加（既にアクション名が存在する場合はスキップ）<br/>2:部分追加（既にアクションが存在する場合は、text及びresponse_text, repliesのみを追加する）<br/>3:置き換え（既にアクション名が存在する場合は置き換え、存在しない場合は追加）<br/>4:削除（アクション名を指定して削除する）<br/>*何も指定しない場合は"3:置き換え"となる</td></tr>
+<tr><td colspan="2">action</td><td></td><td>アクション名<br/>指定されない場合は自動でアクション名が採番される</td></tr>
+<tr><td colspan="2">texts</td><td></td><td>ユーザが発言する内容のリスト<br/>["発言1","発言2"]</td></tr>
+<tr><td colspan="2">responses</td><td></td><td>返答内容のリスト<br/>以下のJSONオブジェクトを持つリスト</td></tr>
+<tr><td></td><td>response_text</td><td>○</td><td>返答内容</td></tr>
+<tr><td></td><td>replies</td><td></td><td>返答内容にボタンを含める場合のボタン名のリスト</td></tr>
+</table>
+
+<p><strong>■ リクエストボディの例</strong>    </p>
+<pre><code>[
+  {"update_type":"1", "action":"action1", "texts":["こんにちは"], "responses":[{"response_text":"こんにちは〜、お元気ですか？", "replies":["はい","いいえ"]}, {"response_text": "こんにちは"}]},
+  {"update_type":"2", "action":"action2", "texts":["こんばんは","お疲れ様"], "responses": [{"response_text":"こんばんは〜"}]},
+  {"update_type":"3", "action":"action3", "texts":["おはよう"], "responses":[{"response_text": "おはようございます"}]},
+  {"update_type":"4", "action":"action4"},
+  {"texts":["自動アクション採番"]},
+  {"texts":["自動アクション採番２"], "responses":[{"response_text":"自動でアクションを採番したよ"}]}
+]
+</code></pre>
+<h3 id="_4">レスポンス</h3>
+<table>
+<tr><th>項目</th><th>説明</th></tr>
+<tr><td>updated</td><td>更新されたアクションのリスト<br/>["action2", "action3"]</td></tr>
+<tr><td>deleted</td><td>削除されたアクションのリスト<br/>["action4"]</td></tr>
+<tr><td>skipped</td><td>スキップされたアクションのリスト<br/>["action1"]</td></tr>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api_entity/" class="btn btn-neutral float-right" title="エンティティ関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../api_app/" class="btn btn-neutral" title="アプリケーション関連API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../api_app/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../api_entity/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

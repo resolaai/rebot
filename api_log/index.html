@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>アカウント関連API - Rebotマニュアル</title>
+  <title>ログ関連API - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30a2\u30ab\u30a6\u30f3\u30c8\u95a2\u9023API";
-    var mkdocs_page_input_path = "api_account.md";
-    var mkdocs_page_url = "/api_account/";
+    var mkdocs_page_name = "\u30ed\u30b0\u95a2\u9023API";
+    var mkdocs_page_input_path = "api_log.md";
+    var mkdocs_page_url = "/api_log/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -81,17 +81,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">アカウント関連API</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#api">アカウント関連API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
         
     </li>
 
@@ -118,8 +109,17 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../api_log/">ログ関連API</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ログ関連API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#api">API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_1">ログ取得API</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -153,7 +153,7 @@
         
       
     
-    <li>アカウント関連API</li>
+    <li>ログ関連API</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -163,29 +163,60 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="api">アカウント関連API</h1>
-<h2 id="api_1">アカウント作成API</h2>
-<p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
-登録後、本登録依頼のメールを送信します。</p>
+                <h1 id="api">API</h1>
+<h2 id="api_1">ログ取得API</h2>
+<p>検索条件を指定して、{unique_id}で指定したアプリケーションのログデータの一覧を取得します。  </p>
 <p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
+<pre><code>/apps/{unique_id}/logs
 </code></pre>
 <h3 id="_1">リクエスト</h3>
 <p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
+<pre><code>GET
 </code></pre>
 <p><strong>■ リクエストパラメータ </strong></p>
 <table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
-<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
+<tr>
+<th>パラメータ</th>
+<th>必須</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>date_from</td>
+<td></td>
+<td>開始日付（yyyy-mm-dd)<br/>値が無い場合は今日日付で検索</td>
+</tr>
+<tr>
+<td>date_to</td>
+<td></td>
+<td>終了日付（yyyy-mm-dd)<br/>値が無い場合は今日日付で検索</td>
+</tr>
+<tr>
+<td>action</td>
+<td></td>
+<td>アクション名を前方一致で検索</td>
+</tr>
+<tr>
+<td>state</td>
+<td></td>
+<td>ステート名を前方一致で検索</td>
+</tr>
 </table>
 
+<p><strong>■ 例</strong>    </p>
+<pre><code>https://rebot.jp/api/apps/xxxxxxxxxxxxxx/logs?date_from=2017-01-01&amp;date_to=2017-03-31&amp;action=sys
+</code></pre>
 <h3 id="_2">レスポンス</h3>
-<p>なし</p>
-<hr />
+<p>以下の情報を含むログ情報をリストで返します。  </p>
+<table>
+<tr><th>項目</th><th>説明</th></tr>
+<tr><td>user</td><td>ユーザを一意に識別するID</td></tr>
+<tr><td>text</td><td>ユーザの会話</td></tr>
+<tr><td>datetime</td><td>日時</td></tr>
+<tr><td>action</td><td>認識したアクション名</td></tr>
+<tr><td>state</td><td>ステート名</td></tr>
+<tr><td>response</td><td>応答内容</td></tr>
+<tr><td>result_json</td><td>システムで解析した情報<br/>詳細はログ詳細画面を確認。</td></tr>
+</table>
               
             </div>
           </div>
@@ -193,10 +224,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_app/" class="btn btn-neutral float-right" title="アプリケーション関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-      
-        <a href="../api/" class="btn btn-neutral" title="API概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../api_entity/" class="btn btn-neutral" title="エンティティ関連API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -222,10 +251,8 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../api_entity/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
-      
-        <span style="margin-left: 15px"><a href="../api_app/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

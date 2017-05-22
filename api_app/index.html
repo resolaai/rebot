@@ -224,7 +224,7 @@
 <tr><td>allowd_ips</td><td>アクセス可能なIPアドレス</td></tr>
 </table>
 
-<p>以下の項目はタイプが"LineApp"の場合で、チャットウィンドウを設置する場合のみ</p>
+<p>以下の項目はタイプが"LineApp"の場合のみ</p>
 <table>
 <tr><th>項目</th><th>説明</th></tr>
 <tr><td>channel_id</td><td>Channel ID</td></tr>
@@ -232,7 +232,7 @@
 <tr><td>access_token</td><td>Access Token</td></tr>
 </table>
 
-<p>以下の項目はタイプが"FacebookApp"の場合で、チャットウィンドウを設置する場合のみ</p>
+<p>以下の項目はタイプが"FacebookApp"の場合のみ</p>
 <table>
 <tr><th>項目</th><th>説明</th></tr>
 <tr><td>access_token</td><td>アクセストークン</td></tr>
@@ -259,19 +259,20 @@
 <tr><td>parent_id</td><td></td><td>親アプリケーションのunique_id<br/>デフォルトは"0"（親アプリなし）</td></tr>
 </table>
 
-<p>以下の項目はタイプが"WebApp"の場合で、チャットウィンドウを設置する場合のみ</p>
+<p>以下の項目はタイプが"WebApp"の場合のみ</p>
 <table>
 <tr><th>項目</th><th>必須</th><th>説明</th></tr>
-<tr><td>header_color</td><td>○</td><td>チャットウィンドウのヘッダーカラー<br/>例）#2baab1</td></tr>
-<tr><td>header_title</td><td>○</td><td>チャットウィンドウのヘッダータイトル</td></tr>
-<tr><td>user_balloon_bg_color</td><td>○</td><td>ユーザ側の吹き出し背景色</td></tr>
-<tr><td>character_image</td><td>○</td><td>チャットウィンドウのキャラクターイメージ名</td></tr>
-<tr><td>allowed_domains</td><td>○</td><td>チャットウィンドウの設置を許可するドメイン名<br/>複数ある場合はカンマ区切りで指定<br/>ドメインを制限しない場合は"*"と指定</td></tr>
+<tr><td>is_chat_window_enabled</td><td>○</td><td>0: チャットウィンドウを設置しない<br/>1: チャットウィンドウを設置する</td></tr>
+<tr><td>header_color</td><td>△</td><td>チャットウィンドウのヘッダーカラー<br/>例）#2baab1<br/>is_chat_window_enabled=1の時、必須</td></tr>
+<tr><td>header_title</td><td>△</td><td>チャットウィンドウのヘッダータイトル<br/>is_chat_window_enabled=1の時、必須</td></tr>
+<tr><td>user_balloon_bg_color</td><td>△</td><td>ユーザ側の吹き出し背景色<br/>is_chat_window_enabled=1の時、必須</td></tr>
+<tr><td>character_image</td><td>△</td><td>チャットウィンドウのキャラクターイメージ名<br/>is_chat_window_enabled=1の時、必須</td></tr>
+<tr><td>allowed_domains</td><td>△</td><td>チャットウィンドウの設置を許可するドメイン名<br/>複数ある場合はカンマ区切りで指定<br/>ドメインを制限しない場合は"*"と指定<br/>is_chat_window_enabled=1の時、必須</td></tr>
 <tr><td>send_url</td><td></td><td>チャットウィンドウが送信する先のURL<br/>指定しない場合はデフォルト送信先</td></tr>
 <tr><td>allowd_ips</td><td></td><td>アクセス可能なIPアドレス</td></tr>
 </table>
 
-<p>以下の項目はタイプが"LineApp"の場合で、チャットウィンドウを設置する場合のみ</p>
+<p>以下の項目はタイプが"LineApp"の場合のみ</p>
 <table>
 <tr><th>項目</th><th>必須</th><th>説明</th></tr>
 <tr><td>channel_id</td><td></td><td>Channel ID</td></tr>
@@ -279,7 +280,7 @@
 <tr><td>access_token</td><td></td><td>Access Token</td></tr>
 </table>
 
-<p>以下の項目はタイプが"FacebookApp"の場合で、チャットウィンドウを設置する場合のみ</p>
+<p>以下の項目はタイプが"FacebookApp"の場合のみ</p>
 <table>
 <tr><th>項目</th><th>必須</th><th>説明</th></tr>
 <tr><td>access_token</td><td></td><td>アクセストークン</td></tr>

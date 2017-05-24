@@ -266,13 +266,14 @@
 <table>
 <tr><th>項目</th><th>必須</th><th>説明</th></tr>
 <tr><td>is_chat_window_enabled</td><td>○</td><td>0: チャットウィンドウを設置しない<br/>1: チャットウィンドウを設置する</td></tr>
-<tr><td>header_color</td><td>△</td><td>チャットウィンドウのヘッダーカラー<br/>例）#2baab1<br/>is_chat_window_enabled=1の時、必須</td></tr>
+<tr><td>header_color</td><td>△</td><td>チャットウィンドウのヘッダー文字色<br/>例）#ffffff<br/>is_chat_window_enabled=1の時、必須</td></tr>
+<tr><td>header_bg_color</td><td>△</td><td>チャットウィンドウのヘッダー背景色<br/>例）#2baab1<br/>is_chat_window_enabled=1の時、必須</td></tr>
 <tr><td>header_title</td><td>△</td><td>チャットウィンドウのヘッダータイトル<br/>is_chat_window_enabled=1の時、必須</td></tr>
 <tr><td>user_balloon_bg_color</td><td>△</td><td>ユーザ側の吹き出し背景色<br/>is_chat_window_enabled=1の時、必須</td></tr>
 <tr><td>character_image</td><td>△</td><td>チャットウィンドウのキャラクターイメージ名<br/>is_chat_window_enabled=1の時、必須</td></tr>
 <tr><td>allowed_domains</td><td>△</td><td>チャットウィンドウの設置を許可するドメイン名<br/>複数ある場合はカンマ区切りで指定<br/>ドメインを制限しない場合は"*"と指定<br/>is_chat_window_enabled=1の時、必須</td></tr>
 <tr><td>send_url</td><td></td><td>チャットウィンドウが送信する先のURL<br/>指定しない場合はデフォルト送信先</td></tr>
-<tr><td>allowd_ips</td><td></td><td>アクセス可能なIPアドレス</td></tr>
+<tr><td>allowed_ips</td><td></td><td>アクセス可能なIPアドレス</td></tr>
 </table>
 
 <p>以下の項目はタイプが"LineApp"の場合のみ</p>
@@ -287,11 +288,10 @@
 <table>
 <tr><th>項目</th><th>必須</th><th>説明</th></tr>
 <tr><td>access_token</td><td></td><td>アクセストークン</td></tr>
-<tr><td>call_back_token</td><td></td><td>Facebook Webhooks コールバック設定時の認証用トークン</td></tr>
 </table>
 
 <p><strong>■ リクエストボディの例</strong>    </p>
-<pre><code>  {"app":"app1", "description":"ウェブチャット", "type":"WebApp", "is_chat_window_enabled":1, "header_color":"#2baab1", "header_title":"カスタマーサポート", "user_balloon_bg_color":"#2baab1", "character_image":"434178f141124497abf7d7d724ed7808.png", "allowed_domains":"rebot.jp"}]}
+<pre><code>  {"app":"app1", "description":"ウェブチャット", "type":"WebApp", "is_chat_window_enabled":1, "header_color":"#2baab1", "header_title":"カスタマーサポート", "user_balloon_bg_color":"#2baab1", "character_image":"434178f141124497abf7d7d724ed7808.png", "allowed_domains":"rebot.jp"}
 </code></pre>
 <h3 id="_6">レスポンス</h3>
 <p>なし（共通レスポンスのみ）</p>
@@ -309,7 +309,6 @@
 <table>
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
 <tr><td>description</td><td></td><td>アプリケーションの説明</td></tr>
-<tr><td>type</td><td>○</td><td>アプリケーションタイプ<br/>WebApp: Web API<br/>LineApp: LINE API<br/>FacebookApp: Facebook API</td></tr>
 <tr><td>parent_id</td><td></td><td>親アプリケーションのunique_id<br/>デフォルトは"0"（親アプリなし）</td></tr>
 </table>
 
@@ -342,7 +341,7 @@
 </table>
 
 <p><strong>■ リクエストボディの例</strong>    </p>
-<pre><code>  {"description":"ウェブチャット（更新）", "type":"WebApp", "is_chat_window_enabled":1, "header_color":"#2baab1", "header_title":"カスタマーサポート", "user_balloon_bg_color":"#2baab1", "character_image":"434178f141124497abf7d7d724ed7808.png", "allowed_domains":"rebot.jp"}]}
+<pre><code>  {"description":"ウェブチャット（更新）", "type":"WebApp", "is_chat_window_enabled":1, "header_color":"#2baab1", "header_title":"カスタマーサポート", "user_balloon_bg_color":"#2baab1", "character_image":"434178f141124497abf7d7d724ed7808.png", "allowed_domains":"rebot.jp"}
 </code></pre>
 <h3 id="_8">レスポンス</h3>
 <p>なし（共通レスポンスのみ）</p>

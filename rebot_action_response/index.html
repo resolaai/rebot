@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>アカウント関連API - Rebotマニュアル</title>
+  <title>応答文への埋込み - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30a2\u30ab\u30a6\u30f3\u30c8\u95a2\u9023API";
-    var mkdocs_page_input_path = "api_account.md";
-    var mkdocs_page_url = "/api_account/";
+    var mkdocs_page_name = "\u5fdc\u7b54\u6587\u3078\u306e\u57cb\u8fbc\u307f";
+    var mkdocs_page_input_path = "rebot_action_response.md";
+    var mkdocs_page_url = "/rebot_action_response/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -80,8 +80,17 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../rebot_action_response/">応答文への埋込み</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">応答文への埋込み</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">応答文への情報の埋込み</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">サンプル</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -138,17 +147,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">アカウント関連API</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#api">API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
         
     </li>
 
@@ -206,11 +206,11 @@
     
       
         
-          <li>API（開発者用） &raquo;</li>
+          <li>アクション &raquo;</li>
         
       
     
-    <li>アカウント関連API</li>
+    <li>応答文への埋込み</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -220,29 +220,57 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="api">API</h1>
-<h2 id="api_1">アカウント作成API</h2>
-<p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
-登録後、本登録依頼のメールを送信します。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
+                <h1 id="_1">応答文への情報の埋込み</h1>
+<p>応答文の中にエンティティの値やステートで取得した情報を埋め込むことができます。  </p>
+<p>ここでは、<code>フォーム穴埋めタイプ</code>で取得した情報を応答文へ埋め込む方法を説明します。  <br />
+（ステートを理解していない場合は、ステートの項目を先に読むことをお薦めします）    </p>
+<h4 id="_2">サンプル</h4>
+<p>以下は、<code>フォーム穴埋めタイプ</code>のステートで返品対応を行い、必要な情報を全て集めた状態です。  <br />
+このようにRebotでは、現在の状態をJSON形式で保有しており、応答文からこれらの情報にアクセスすることが可能です。</p>
+<pre><code>{
+  "action": "sys_no_action",
+  "state": {
+      "return": {
+          "form_next": "",
+          "form": {
+              "email": "test@test.com",
+              "return_reason": "思ったものと違った",
+              "return_method": {
+                  "origin": "返金",
+                  "value": "返金"
+              },
+              "return_product": {
+                  "origin": "商品xx-x",
+                  "value": "商品XX-X"
+              }
+          },
+          "status": [
+              "confirm",
+          ]
+      }
+  },
+  "text": "test@test.com",
+  "entity": {},
+}
 </code></pre>
-<h3 id="_1">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
+<p>ここで、応答文として、以下のような返答をしたい場合を考えます。</p>
+<pre><code>商品「商品XX-X」の返品でよろしいですね。
+----------------------------
+返品理由：思ったものと違った
+手続き：返金
+EMAIL：test@test.com
+----------------------------
 </code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
-<table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
-<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
-</table>
-
-<h3 id="_2">レスポンス</h3>
-<p>なし</p>
-<hr />
+<p>この場合、「商品XX-X」「思ったものと違った」「返金」「test@test.com」がステートで取得した値です。<br />
+応答文でこれらの値を表示する為には、上記JSONの値にドット(.)区切りでアクセスするパスを指定します。</p>
+<pre><code>商品「{{state.return.form.return_product.value}}」の返品でよろしいですね。
+----------------------------
+返品理由：{{state.return.form.return_reason}}
+手続き：{{state.return.form.return_method.value}}
+EMAIL：{{state.return.form.email}}
+----------------------------
+</code></pre>
+<p>これで応答文にステートで取得した値を埋め込むことができるようになります。</p>
               
             </div>
           </div>
@@ -250,10 +278,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_app/" class="btn btn-neutral float-right" title="アプリケーション関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rebot_entity/" class="btn btn-neutral float-right" title="エンティティ">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../api/" class="btn btn-neutral" title="API概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rebot_action/" class="btn btn-neutral" title="アクション基礎"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -279,10 +307,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../rebot_action/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../api_app/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../rebot_entity/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

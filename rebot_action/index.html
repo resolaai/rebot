@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>アクション基礎 - Rebotマニュアル</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u30a2\u30af\u30b7\u30e7\u30f3\u57fa\u790e";
+    var mkdocs_page_input_path = "rebot_action.md";
+    var mkdocs_page_url = "/rebot_action/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rebotマニュアル</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">HOME</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot/">Rebot概要</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_app/">アプリケーション</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>アクション</span></li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">アクション基礎</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">アクション</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">基本設定項目</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_action_response/">応答文への埋込み</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_entity/">エンティティ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ステート</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_state/">ステート基礎</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_state_formfilling/">フォーム穴埋めタイプ</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../account/">アカウントについて</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>API（開発者用）</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/">API概要</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_app/">アプリケーション関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_action/">アクション関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_entity/">エンティティ関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_log/">ログ関連API</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rebotマニュアル</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>アクション &raquo;</li>
+        
+      
+    
+    <li>アクション基礎</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">アクション</h1>
+<p>ユーザが発言するであろう内容と、それに対する回答の設定を行います。  <br />
+チャットボットに対してユーザから発言があった場合に、ここで定義したアクションの会話文との類似度を計算して、どのアクションに当たるのか判断をします。</p>
+<h2 id="_2">基本設定項目</h2>
+<h4 id="_3">アクション基本情報タブ</h4>
+<ul>
+<li><strong>アクション名:</strong><ul>
+<li>アクションを一意に識別するためのID</li>
+<li>英数字及びアンダーバーのみ利用可能で、最初の文字は英数字で始まる必要があります。</li>
+</ul>
+</li>
+<li><strong>ユーザが話かける会話文:</strong><ul>
+<li>ユーザが発言するであろう内容を自然会話文そのまま入力します。</li>
+<li>ユーザからチャットボットに対して発言があった場合に、ここで定義されている会話文との類似度を計算して、アクションの判定が行われます。</li>
+<li>複数会話文を設定することが可能です。<ul>
+<li>例）「注文方法について」「どうやって注文するの」と設定した場合、どちらの言い回しであっても同一のアクションとして判定されます。</li>
+</ul>
+</li>
+<li>表記揺れや単語の類似度も考慮されています。<ul>
+<li>「どうやって注文するの」と「どのように注文しますか」などの言い回しの違いも考慮しているため、別の会話文として登録する必要はないです。</li>
+<li>「PC」と「パソコン」」など別の単語でも似た意味として自動で認識されるため、別の会話文として登録する必要はないです。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="_4">このアクションに対する応答文タブ</h4>
+<ul>
+<li><strong>このアクションに対する応答文:</strong><ul>
+<li>指定されたアクションに対する応答文の設定を行います。</li>
+<li>チャットボットの応答は、１回の応答で複数メッセージ応答することができます。これを<code>応答文グループ</code>と呼びます。</li>
+<li>複数の<code>応答文グループ</code>を追加すると、<code>応答文グループ</code>の中からランダムで１つ選択されて応答します。</li>
+<li>応答文の中にエンティティの値やステートで取得した情報を埋め込むことができます。詳しくはを<a href="../rebot_action_response/">応答文への埋込み</a>参照</li>
+</ul>
+</li>
+<li><strong>応答タイプ:</strong><ul>
+<li>【Webの場合】
+<table>
+<tr><th style="width:250px;">応答タイプ</th><th>説明</th></tr>
+<tr>
+<td>Web - テキストメッセージ</td>
+<td>テキストで応答します。<br/>文字だけでなく、画像タグやビデオタグを埋め込むことも可能です。<br/>応答選択肢を指定することで、ユーザの次の発言の選択肢をボタンとして返すこともできます。</td>
+</tr>
+</table></li>
+<li>【LINEの場合】 <br />
+<table>
+<tr><th style="width:250px;">応答タイプ</th><th>説明</th></tr>
+<tr>
+<td>LINE - テキストメッセージ</td>
+<td>テキストで応答します。</td>
+</tr>
+<tr>
+<td>LINE - イメージメッセージ</td>
+<td>画像で応答します。</td>
+</tr>
+<tr>
+<td>LINE - イメージマップメッセージ</td>
+<td>画像で応答します。 <br/>画像内にタップエリアを指定して、タップされた場合の行動（ウェブサイトを開くもしくはメッセージの送信）を指定することができます。</td>
+</tr>
+<tr>
+<td>LINE - 確認メッセージ</td>
+<td>LINEの確認タイプのメッセージで応答します。<br/>２つのボタンを指定できます。</td>
+</tr>
+<tr>
+<td>LINE - ボタンメッセージ</td>
+<td>LINEのボタンタイプのメッセージで応答します。<br/>画像の指定や４つまでボタンの指定ができます。</td>
+</tr>
+<tr>
+<td>LINE - カルーセルメッセージ</td>
+<td>LINEのカルーセルタイプのメッセージで応答します。<br/>カラム毎にボタンメッセージを指定することができます。<br/>カラムは５つまで設定が可能です。</td>
+</tr>
+</table></li>
+<li>【Facebookの場合】
+<table>
+<tr><th style="width:250px;">応答タイプ</th><th>説明</th></tr>
+<tr>
+<td>Facebook - テキストメッセージ</td>
+<td>テキストで応答します。</td>
+</tr>
+<tr>
+<td>Facebook - イメージメッセージ</td>
+<td>画像で応答します。</td>
+</tr>
+<tr>
+<td>Facebook - ボタンメッセージ</td>
+<td>Facebookのボタンタイプのメッセージで応答します。<br/>3つまでボタンの指定ができます。</td>
+</tr>
+<tr>
+<td>Facebook - カルーセルメッセージ</td>
+<td>Facebookのカルーセルタイプのメッセージで応答します。<br/>カラム毎にボタンメッセージを指定することができます。<br/>カラムは10個まで設定が可能です。</td>
+</tr>
+</table></li>
+</ul>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../rebot_action_response/" class="btn btn-neutral float-right" title="応答文への埋込み">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../rebot_app/" class="btn btn-neutral" title="アプリケーション"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../rebot_app/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../rebot_action_response/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

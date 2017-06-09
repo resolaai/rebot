@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>アカウント関連API - Rebotマニュアル</title>
+  <title>エンティティ - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30a2\u30ab\u30a6\u30f3\u30c8\u95a2\u9023API";
-    var mkdocs_page_input_path = "api_account.md";
-    var mkdocs_page_url = "/api_account/";
+    var mkdocs_page_name = "\u30a8\u30f3\u30c6\u30a3\u30c6\u30a3";
+    var mkdocs_page_input_path = "rebot_entity.md";
+    var mkdocs_page_url = "/rebot_entity/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -90,8 +90,17 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../rebot_entity/">エンティティ</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">エンティティ</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">エンティティ</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">基本設定項目</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -138,17 +147,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">アカウント関連API</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#api">API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
         
     </li>
 
@@ -205,12 +205,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>API（開発者用） &raquo;</li>
-        
-      
     
-    <li>アカウント関連API</li>
+    <li>エンティティ</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -220,29 +216,34 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="api">API</h1>
-<h2 id="api_1">アカウント作成API</h2>
-<p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
-登録後、本登録依頼のメールを送信します。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
-</code></pre>
-<h3 id="_1">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
-</code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
-<table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
-<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
-</table>
-
-<h3 id="_2">レスポンス</h3>
-<p>なし</p>
-<hr />
+                <h1 id="_1">エンティティ</h1>
+<p>一般的に使われる辞書はRebotが既に保有しており、単語間の類似度の計算も自動で行われます。  <br />
+ただし、企業で使われる専門用語や商品名などの固有名詞はデフォルトでは正しく認識させることができません。
+その為、ここでエンティティとして登録することで、チャットボットに正しく固有名詞を認識させることができるようになります。</p>
+<h2 id="_2">基本設定項目</h2>
+<ul>
+<li><strong>エンティティ名:</strong><ul>
+<li>エンティティを一意に識別するためのID</li>
+<li>英数字及びアンダーバーのみ利用可能で、最初の文字は英数字で始まる必要があります。</li>
+</ul>
+</li>
+<li><strong>エンティティの値:</strong><ul>
+<li>１つのエンティティには複数のエンティティの値を設定することができます。</li>
+<li>例えば、「支払い方法」というエンティティに「Paidy」「クレジットカード決済」「代金引換」といった値を設定することができます。</li>
+</ul>
+</li>
+<li><strong>同義語:</strong><ul>
+<li>エンティティの値に同義語がある場合に指定します。</li>
+<li>例えば、「クレジットカード決済」に対しては「クレジットカード払い」「クレカ払い」などを同義語として定義したりできます。</li>
+<li>通常の単語は、Rebotが保有している辞書により単語間の類似度が計算されますが、専門用語や商品名などのエンティティは単語間の類似度計算ができない為、同一意味で使われる単語は、同義語として設定する必要があります。</li>
+</ul>
+</li>
+<li><strong>付加情報:</strong><ul>
+<li>エンティティ値に付加情報をJSON形式で設定しておくことができます。</li>
+<li>付加情報を設定しておくことで、このエンティティが認識された時に、応答文に付加情報の値を埋め込んで返信することができます。</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
@@ -250,10 +251,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_app/" class="btn btn-neutral float-right" title="アプリケーション関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rebot_state/" class="btn btn-neutral float-right" title="ステート基礎">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../api/" class="btn btn-neutral" title="API概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rebot_action_response/" class="btn btn-neutral" title="応答文への埋込み"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -279,10 +280,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../rebot_action_response/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../api_app/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../rebot_state/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

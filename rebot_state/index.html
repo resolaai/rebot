@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>アカウント関連API - Rebotマニュアル</title>
+  <title>ステート基礎 - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30a2\u30ab\u30a6\u30f3\u30c8\u95a2\u9023API";
-    var mkdocs_page_input_path = "api_account.md";
-    var mkdocs_page_url = "/api_account/";
+    var mkdocs_page_name = "\u30b9\u30c6\u30fc\u30c8\u57fa\u790e";
+    var mkdocs_page_input_path = "rebot_state.md";
+    var mkdocs_page_url = "/rebot_state/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -102,8 +102,17 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../rebot_state/">ステート基礎</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ステート基礎</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">ステート</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">基本設定項目</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -138,17 +147,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">アカウント関連API</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#api">API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
         
     </li>
 
@@ -206,11 +206,11 @@
     
       
         
-          <li>API（開発者用） &raquo;</li>
+          <li>ステート &raquo;</li>
         
       
     
-    <li>アカウント関連API</li>
+    <li>ステート基礎</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -220,29 +220,52 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="api">API</h1>
-<h2 id="api_1">アカウント作成API</h2>
-<p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
-登録後、本登録依頼のメールを送信します。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
-</code></pre>
-<h3 id="_1">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
-</code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
+                <h1 id="_1">ステート</h1>
+<p>ステートを使うことで、会話の状態を保存するような会話シナリオを作成することができます。</p>
+<p>ステートには様々なタイプがあります。  <br />
+その中の１つ<code>フォーム穴埋めタイプ</code>では、チャットボットがユーザから聞き出したい項目を指定することできす。チャットボットは、対話形式でユーザからそれらの項目を聞き出します。 <br />
+例えば、返品対応をチャットボットにさせたいときは、「返品対象商品」「返品理由」「連絡先」など必要な情報をチャットボットに集めさせることができます。</p>
+<h2 id="_2">基本設定項目</h2>
+<ul>
+<li><strong>ステート名:</strong><ul>
+<li>ステートを一意に識別するためのID</li>
+<li>英数字及びアンダーバーのみ利用可能で、最初の文字は英数字で始まる必要がある</li>
+</ul>
+</li>
+<li>
+<p><strong>ステートタイプ:</strong></p>
+<ul>
+<li>現状以下のステートタイプが存在します。今後順次拡張予定です。
 <table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
-<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
-</table>
-
-<h3 id="_2">レスポンス</h3>
-<p>なし</p>
-<hr />
+<tr><th style="width:200px;">ステートタイプ</th><th>説明</th></tr>
+<tr><td>フォーム穴埋めタイプ</td><td>チャットボットがユーザから聞き出したい項目を指定することで、それらの項目が全てうまるまでチャットボットがユーザと会話を行い自動で聞き出します。</td></tr>
+<tr><td>有人チャットへ切り替え<br/>（オプション機能）</td><td>チャットボットから有人対応のチャットへ切り替えを行うことができます。</td></tr>
+</table></li>
+</ul>
+</li>
+<li>
+<p><strong>当ステートに遷移する為の条件:</strong></p>
+<ul>
+<li>このステートに入る条件を指定します。</li>
+<li>例えば、「返品したい」と言うユーザのアクションを受けて、返品ステートへ遷移させます。</li>
+<li>対象のステートを指定することで、特定のステートに居る時のみ、このステートへ遷移させるなど、分岐を行わせることができます。</li>
+</ul>
+</li>
+<li>
+<p><strong>当ステート完了時の処理:</strong></p>
+<ul>
+<li>このステートから出るときの次のステートを指定します。</li>
+<li>特に次のステートが無い場合は<code>sys_no_state</code>を指定しておきます。（デフォルト）</li>
+</ul>
+</li>
+<li>
+<p><strong>このステートに対する基本応答文:</strong></p>
+<ul>
+<li>このステートに入った時、出る時、キャンセルする場合、ステート内で理解されない発言があった場合の応答文を設定します。</li>
+<li>ここで指定した応答文は、実際にはアクションの応答文として設定されています。（アクション一覧から確認可能）</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
@@ -250,10 +273,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_app/" class="btn btn-neutral float-right" title="アプリケーション関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rebot_state_formfilling/" class="btn btn-neutral float-right" title="フォーム穴埋めタイプ">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../api/" class="btn btn-neutral" title="API概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rebot_entity/" class="btn btn-neutral" title="エンティティ"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -279,10 +302,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../rebot_entity/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../api_app/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../rebot_state_formfilling/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

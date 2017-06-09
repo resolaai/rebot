@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>アカウント関連API - Rebotマニュアル</title>
+  <title>アプリケーション - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30a2\u30ab\u30a6\u30f3\u30c8\u95a2\u9023API";
-    var mkdocs_page_input_path = "api_account.md";
-    var mkdocs_page_url = "/api_account/";
+    var mkdocs_page_name = "\u30a2\u30d7\u30ea\u30b1\u30fc\u30b7\u30e7\u30f3";
+    var mkdocs_page_input_path = "rebot_app.md";
+    var mkdocs_page_url = "/rebot_app/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -61,8 +61,17 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../rebot_app/">アプリケーション</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">アプリケーション</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">アプリケーション</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">基本設定項目</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -138,17 +147,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">アカウント関連API</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#api">API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
         
     </li>
 
@@ -205,12 +205,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>API（開発者用） &raquo;</li>
-        
-      
     
-    <li>アカウント関連API</li>
+    <li>アプリケーション</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -220,29 +216,41 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="api">API</h1>
-<h2 id="api_1">アカウント作成API</h2>
-<p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
-登録後、本登録依頼のメールを送信します。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
-</code></pre>
-<h3 id="_1">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
-</code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
+                <h1 id="_1">アプリケーション</h1>
+<p>チャットボット１つにつき１つのアプリケーションを作成します。  <br />
+Web用、LINE用、Facebook用と複数チャットボットを作成する場合は、それぞれでアプリケーションの作成を行います。 <br />
+それぞれのタイプのチャットボットの詳細設定は、ここで行います。</p>
+<h2 id="_2">基本設定項目</h2>
+<ul>
+<li><strong>アプリケーション名:</strong><ul>
+<li>アプリケーションを一意に識別するためのID</li>
+<li>英数字及びアンダーバーのみ利用可能で、最初の文字は英数字で始まる必要があります。</li>
+</ul>
+</li>
+<li><strong>アプリケーションタイプ:</strong><ul>
+<li>チャットボットのタイプ（Web/LINE/Facebook）を指定します。</li>
+<li>それぞれのアプリケーションタイプによって設定項目が異なってきます。
 <table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
-<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
-</table>
-
-<h3 id="_2">レスポンス</h3>
-<p>なし</p>
-<hr />
+<tr><th style="width:200px;">アプリケーションタイプ</th><th>説明</th></tr>
+<tr>
+<td>Web</td><td>ウェブサイトに設定するチャットウィンドウの見た目や設置可能なドメインの指定などを行います。</td>
+</tr>
+<tr>
+<td>LINE</td><td>LINEと接続するための項目の設定を行います。</td>
+</tr>
+<tr>
+<td>Facebook</td><td>Facebookと接続するための項目の設定を行います。</td>
+</tr>
+</table></li>
+</ul>
+</li>
+<li><strong>親アプリケーション:</strong><ul>
+<li>複数チャットボットを作成した時に、親のチャットボットの指定を行うことができます。</li>
+<li>親のチャットボットが指定されている場合、子チャットボットが認識できない会話文があった場合に、親のアプリケーションにエスカレーションし会話文の認識を行います。</li>
+<li>例えば、Web、LINE、Facebook用と複数のチャットボットを作成したが、それぞれ同じ応答で良い場合に、親アプリケーションを指定しておくことで、同じ内容の設定を各々のチャットボットに対してする必要がなくなります。</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
@@ -250,10 +258,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_app/" class="btn btn-neutral float-right" title="アプリケーション関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rebot_action/" class="btn btn-neutral float-right" title="アクション基礎">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../api/" class="btn btn-neutral" title="API概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rebot/" class="btn btn-neutral" title="Rebot概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -279,10 +287,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../rebot/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../api_app/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../rebot_action/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

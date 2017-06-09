@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>アカウント関連API - Rebotマニュアル</title>
+  <title>フォーム穴埋めタイプ - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30a2\u30ab\u30a6\u30f3\u30c8\u95a2\u9023API";
-    var mkdocs_page_input_path = "api_account.md";
-    var mkdocs_page_url = "/api_account/";
+    var mkdocs_page_name = "\u30d5\u30a9\u30fc\u30e0\u7a74\u57cb\u3081\u30bf\u30a4\u30d7";
+    var mkdocs_page_input_path = "rebot_state_formfilling.md";
+    var mkdocs_page_url = "/rebot_state_formfilling/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -109,8 +109,17 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../rebot_state_formfilling/">フォーム穴埋めタイプ</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">フォーム穴埋めタイプ</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#_1">フォーム穴埋めタイプのステート</a></li>
+                
+                    <li><a class="toctree-l4" href="#_2">基本設定項目</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -138,17 +147,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">アカウント関連API</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#api">API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
         
     </li>
 
@@ -206,11 +206,11 @@
     
       
         
-          <li>API（開発者用） &raquo;</li>
+          <li>ステート &raquo;</li>
         
       
     
-    <li>アカウント関連API</li>
+    <li>フォーム穴埋めタイプ</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -220,29 +220,46 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="api">API</h1>
-<h2 id="api_1">アカウント作成API</h2>
-<p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
-登録後、本登録依頼のメールを送信します。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
-</code></pre>
-<h3 id="_1">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
-</code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
-<table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
-<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
-</table>
-
-<h3 id="_2">レスポンス</h3>
-<p>なし</p>
-<hr />
+                <h1 id="_1">フォーム穴埋めタイプのステート</h1>
+<p>ユーザから聞き出したい項目を指定することで、チャットボットが対話形式にそれらの項目を聞き出してくれます。  <br />
+集めた情報は、後続のステートへ連携させることが可能です。</p>
+<h2 id="_2">基本設定項目</h2>
+<h4 id="_3">当ステートで取得する項目</h4>
+<ul>
+<li><strong>項目名:</strong><ul>
+<li>このステートで聞き出す項目のIDです。英数字及びアンダーバーのみ使えます。</li>
+<li>例えば「返品商品」を聞き出したいのであれば、<code>return_product</code>などとわかりやすい名称を指定します。</li>
+</ul>
+</li>
+<li><strong>当項目に設定するエンティテエィの定義:</strong><ul>
+<li>この項目に該当するエンティティを指定します。</li>
+<li>例えば「返品方法」を聞き出したい時に、「返金」「ポイント変換」のどちらかを選ばせたい場合は、「返金」「ポイント変換」をエンティティとして登録し、そのエンティティを指定します。</li>
+<li>特にどのような値でも良い場合は、<code>sys_any</code>（デフォルト）を指定します。</li>
+</ul>
+</li>
+<li><strong>当項目に設定するエンティティの条件:</strong><ul>
+<li>指定したエンティティが複数ある場合に、どういう条件のエンティティを優先するのかを指定します。</li>
+<li>例えば、「東京から大阪まで」というように、<code>sys_address</code>エンティティが「出発地」と「到着地」の両方同時に話されることがあります。この場合は、条件を指定しておく必要があります。「出発地」の場合でしたら、<code>sys_address</code>エンティティの「type」が「from」のものを取得したいため、<code>type==from</code>と指定します。</li>
+</ul>
+</li>
+<li><strong>当項目を聞き出す為の応答メッセージ:</strong><ul>
+<li>当項目を聞き出す為の応答メッセージを指定します。</li>
+<li>応答選択肢（ボタン）も指定することができます。応答選択肢は、カンマ区切りで記入します。</li>
+</ul>
+</li>
+<li><strong>フォームに値を設定する際に入力チェックを行う場合（入力チェック）</strong><ul>
+<li>Emailや電話番号など簡単な入力チェックを行いたい場合に指定します。</li>
+<li>現状チェックタイプとしては正規表現のみ対応しています。<ul>
+<li>例）メールアドレスチェック： <code>(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)</code></li>
+</ul>
+</li>
+<li>また、入力チェックでエラーとなった場合の応答文もここで指定します。入力値にエラーがあったことをことを伝え、再度入力を促します。<ul>
+<li>例）「正しいメールアドレスではございません。再度メールアドレスをご入力ください。」</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
@@ -250,10 +267,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_app/" class="btn btn-neutral float-right" title="アプリケーション関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../account/" class="btn btn-neutral float-right" title="アカウントについて">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../api/" class="btn btn-neutral" title="API概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rebot_state/" class="btn btn-neutral" title="ステート基礎"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -279,10 +296,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../rebot_state/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../api_app/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../account/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

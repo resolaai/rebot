@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>アカウント関連API - Rebotマニュアル</title>
+  <title>Rebot概要 - Rebotマニュアル</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u30a2\u30ab\u30a6\u30f3\u30c8\u95a2\u9023API";
-    var mkdocs_page_input_path = "api_account.md";
-    var mkdocs_page_url = "/api_account/";
+    var mkdocs_page_name = "Rebot\u6982\u8981";
+    var mkdocs_page_input_path = "rebot.md";
+    var mkdocs_page_url = "/rebot/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -54,8 +54,17 @@
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../rebot/">Rebot概要</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Rebot概要</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#rebot">Rebot概要</a></li>
+                
+                    <li><a class="toctree-l4" href="#_1">基本要素</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -138,17 +147,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">アカウント関連API</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#api">API</a></li>
-                
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
         
     </li>
 
@@ -205,12 +205,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>API（開発者用） &raquo;</li>
-        
-      
     
-    <li>アカウント関連API</li>
+    <li>Rebot概要</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -220,29 +216,32 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="api">API</h1>
-<h2 id="api_1">アカウント作成API</h2>
-<p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
-登録後、本登録依頼のメールを送信します。</p>
-<p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
-</code></pre>
-<h3 id="_1">リクエスト</h3>
-<p><strong>■ リクエストメソッド </strong>  </p>
-<pre><code>POST
-</code></pre>
-<p><strong>■ リクエストパラメータ </strong></p>
+                <h1 id="rebot">Rebot概要</h1>
+<p>ここでは、Rebotの基本概念の説明を行います。</p>
+<h2 id="_1">基本要素</h2>
+<p>Rebotのチャットボットは、以下の基本要素からでできております。</p>
 <table>
-<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
-<tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
-<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
+<tr>
+<th style="width:200px;">基本要素</th>
+<th>説明</th>
+</tr>
+<tr>
+<td>アプリケーション</td>
+<td>チャットボット１つにつき１つのアプリケーションを作成します。Web用、LINE用、Facebook用とそれぞれのボット用のアプリケーションの作成が行えます。</td>
+</tr>
+<tr>
+<td>アクション</td>
+<td>ユーザが発言するであろう内容と、それに対する回答の設定を行います。<br/>FAQのQとAを登録していくイメージです。</td>
+</tr>
+<tr>
+<td>エンティティ</td>
+<td>企業で使われる専門用語や商品名などの固有名詞の設定を行います。<br/>一般的な辞書はRebotが保有していますが、専門用語や商品名などの固有名詞を正しく認識できないためエンティティとして登録を行います。</td>
+</tr>
+<tr>
+<td>ステート</td>
+<td>会話の状態を保存するような会話シナリオを設定します。<br/>例えば、返品対応をチャットボットにさせたいときは、「返品対象商品」「返品理由」「連絡先」など必要な情報をチャットボットに集めさせて後続処理をさせることができます。</td>
+</tr>
 </table>
-
-<h3 id="_2">レスポンス</h3>
-<p>なし</p>
-<hr />
               
             </div>
           </div>
@@ -250,10 +249,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../api_app/" class="btn btn-neutral float-right" title="アプリケーション関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rebot_app/" class="btn btn-neutral float-right" title="アプリケーション">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../api/" class="btn btn-neutral" title="API概要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral" title="HOME"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -279,10 +278,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../api_app/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../rebot_app/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

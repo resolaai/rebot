@@ -145,7 +145,13 @@
             
                 <li class="toctree-l3"><a href="#api">API</a></li>
                 
-                    <li><a class="toctree-l4" href="#api_1">アカウント作成API</a></li>
+                    <li><a class="toctree-l4" href="#api_1">アカウント一覧取得API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_2">アカウント詳細取得API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_3">アカウント作成API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_4">アカウント更新API</a></li>
                 
             
             </ul>
@@ -221,13 +227,75 @@
             <div class="section">
               
                 <h1 id="api">API</h1>
-<h2 id="api_1">アカウント作成API</h2>
+<h2 id="api_1">アカウント一覧取得API</h2>
+<p>アカウントの一覧を取得します。
+ログインされているユーザの権限によって取得できる内容が異なります。<br />
+スーパーユーザ：全アカウントの一覧を取得<br />
+管理者・一般：当該ユーザが所属する企業内のアカウント一覧を取得</p>
+<p><strong>■ エンドポイント</strong>    </p>
+<pre><code>/accounts
+</code></pre>
+<h3 id="_1">リクエスト</h3>
+<p><strong>■ リクエストメソッド </strong>  </p>
+<pre><code>GET
+</code></pre>
+<p><strong>■ リクエストパラメータ </strong></p>
+<p>なし</p>
+<h3 id="_2">レスポンス</h3>
+<p>以下の項目を持つオブジェクトのリストを返します。  </p>
+<table>
+<tr><th colspan="2">項目</th><th>説明</th></tr>
+<tr><td colspan="2">id</td><td>ユーザID</td></tr>
+<tr><td colspan="2">cid</td><td>企業ID</td></tr>
+<tr><td colspan="2">email</td><td>Eメールアドレス</td></tr>
+<tr><td colspan="2">is_active</td><td>当該ユーザが有効か無効化を表す</td></tr>
+<tr><td colspan="2">role</td><td>当該ユーザのロール<br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
+<tr><td colspan="2">person_in_charge</td><td>ユーザ名</td></tr>
+<tr><td colspan="2">profile_image</td><td>ユーザのプロフィールイメージ</td></tr>
+<tr><td colspan="2">company_info</td><td>以下の会社情報を持つオブジェクト</td></tr>
+<tr><td></td><td>company_name</td><td>会社名</td></tr>
+<tr><td></td><td>is_rtchat_enabled</td><td>有人対応の有無</td></tr>
+<tr><td></td><td>app_num_limit</td><td>アプリケーション作成可能数</td></tr>
+<tr><td></td><td>no_show_menu</td><td>表示しないメニューの一覧</td></tr>
+</table>
+
+<hr />
+<h2 id="api_2">アカウント詳細取得API</h2>
+<p>アカウントの詳細情報を取得します。</p>
+<p><strong>■ エンドポイント</strong>    </p>
+<pre><code>/accounts/{user_id}
+</code></pre>
+<h3 id="_3">リクエスト</h3>
+<p><strong>■ リクエストメソッド </strong>  </p>
+<pre><code>GET
+</code></pre>
+<p><strong>■ リクエストパラメータ </strong></p>
+<p>なし</p>
+<h3 id="_4">レスポンス</h3>
+<table>
+<tr><th colspan="2">項目</th><th>説明</th></tr>
+<tr><td colspan="2">id</td><td>ユーザID</td></tr>
+<tr><td colspan="2">cid</td><td>企業ID</td></tr>
+<tr><td colspan="2">email</td><td>Eメールアドレス</td></tr>
+<tr><td colspan="2">is_active</td><td>当該ユーザが有効か無効化を表す</td></tr>
+<tr><td colspan="2">role</td><td>当該ユーザのロール<br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
+<tr><td colspan="2">person_in_charge</td><td>ユーザ名</td></tr>
+<tr><td colspan="2">profile_image</td><td>ユーザのプロフィールイメージ</td></tr>
+<tr><td colspan="2">company_info</td><td>以下の会社情報を持つオブジェクト</td></tr>
+<tr><td></td><td>company_name</td><td>会社名</td></tr>
+<tr><td></td><td>is_rtchat_enabled</td><td>有人対応の有無</td></tr>
+<tr><td></td><td>app_num_limit</td><td>アプリケーション作成可能数</td></tr>
+<tr><td></td><td>no_show_menu</td><td>表示しないメニューの一覧</td></tr>
+</table>
+
+<hr />
+<h2 id="api_3">アカウント作成API</h2>
 <p>Emailアドレス、ロールを指定してアカウントの作成を行います。<br />
 登録後、本登録依頼のメールを送信します。</p>
 <p><strong>■ エンドポイント</strong>    </p>
-<pre><code>/account/register
+<pre><code>/accounts/
 </code></pre>
-<h3 id="_1">リクエスト</h3>
+<h3 id="_5">リクエスト</h3>
 <p><strong>■ リクエストメソッド </strong>  </p>
 <pre><code>POST
 </code></pre>
@@ -236,13 +304,39 @@
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
 <tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
 <tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
-<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる</td></tr>
+<tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる。（新たな会社を作成できるのはスーパーユーザアカウントのみです。）</td></tr>
 <tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
+<tr><td>app_num_limit</td><td></td><td>作成可能なアプリケーションの数を指定します。無制限の場合は0を指定します。</td></tr>
+<tr><td>no_show_menu</td><td></td><td>表示しないメニューをカンマ区切りで指定します。<br/>例）state,test,log</td></tr>
 </table>
 
-<h3 id="_2">レスポンス</h3>
-<p>なし</p>
+<h3 id="_6">レスポンス</h3>
+<p>なし（共通レスポンスのみ）</p>
 <hr />
+<h2 id="api_4">アカウント更新API</h2>
+<p>アカウントの詳細情報を更新します。</p>
+<p><strong>■ エンドポイント</strong>    </p>
+<pre><code>/accounts/{user_id}
+</code></pre>
+<h3 id="_7">リクエスト</h3>
+<p><strong>■ リクエストメソッド </strong>  </p>
+<pre><code>POST
+</code></pre>
+<p><strong>■ リクエストパラメータ </strong></p>
+<table>
+<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td>email</td><td>○</td><td>更新するアカウントのEメールアドレス</td></tr>
+<tr><td>role</td><td></td><td>役割<br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
+<tr><td>person_in_charge</td><td></td><td>名前</td></tr>
+<tr><td>profile_image</td><td></td><td>プロフィールイメージ</td></tr>
+<tr><td>company_name</td><td></td><td>会社名<br/>（会社情報を更新できるのはスーパーユーザアカウントのみです。）</td></tr>
+<tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合<br/>（会社情報を更新できるのはスーパーユーザアカウントのみです。）</td></tr>
+<tr><td>app_num_limit</td><td></td><td>作成可能なアプリケーションの数を指定します。無制限の場合は0を指定します。<br/>（会社情報を更新できるのはスーパーユーザアカウントのみです。）</td></tr>
+<tr><td>no_show_menu</td><td></td><td>表示しないメニューをカンマ区切りで指定します。<br/>例）state,test,log<br/>（会社情報を更新できるのはスーパーユーザアカウントのみです。）</td></tr>
+</table>
+
+<h3 id="_8">レスポンス</h3>
+<p>なし（共通レスポンスのみ）</p>
               
             </div>
           </div>

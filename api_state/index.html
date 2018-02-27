@@ -365,7 +365,7 @@ cancel:対応時間外等により有人チャットに切替わらなかった�
 <tr><td></td><td colspan="2">responses</td><td></td><td>入力フォームに関連する応答文のリスト</td></tr>
 <tr><td></td><td></td><td>type</td><td></td><td>応答文のタイプ<br/>
 form_name:当項目を聞き出す為の応答文<br/>
-form_error:入力内容にエラーがある場合の応答文
+formerror:入力内容にエラーがある場合の応答文
 </td></tr>
 <tr><td></td><td></td><td>response_text</td><td></td><td>応答文</td></tr>
 <tr><td></td><td></td><td>replies</td><td></td><td>応答文に返答用ボタンを表示する場合のボタン名のリスト</td></tr>
@@ -409,7 +409,7 @@ form_error:入力内容にエラーがある場合の応答文
       {"type":"modify","response_text":"了解しました"}
       ],
     "forms":[
-      {"form_name":"name","validations":[{"validation_type":"regex","validation_value":"[0-9]+"}],"responses":[{"type":"form_name","response_text":"名前を教えてください。"},{"type":"form_error","response_text":"入力内容に誤りがあります。"}]},
+      {"form_name":"name","validations":[{"validation_type":"regex","validation_value":"[0-9]+"}],"responses":[{"type":"form_name","response_text":"名前を教えてください。"},{"type":"formerror","response_text":"入力内容に誤りがあります。"}]},
       {"form_name":"product","form_value":"product","responses":[{"type":"form_name","response_text":"商品を選択してください。"}]}
     ]
   },

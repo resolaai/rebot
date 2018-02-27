@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ステート関連API - Rebotマニュアル</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u30b9\u30c6\u30fc\u30c8\u95a2\u9023API";
+    var mkdocs_page_input_path = "api_state.md";
+    var mkdocs_page_url = "/api_state/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Rebotマニュアル</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">HOME</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot/">Rebot概要</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_app/">アプリケーション</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>アクション</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_action/">アクション基礎</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_action_response/">応答文への埋込み</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_entity/">エンティティ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>ステート</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_state/">ステート基礎</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../rebot_state_formfilling/">フォーム穴埋めタイプ</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../account/">アカウントについて</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>API（開発者用）</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api/">API概要</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_account/">アカウント関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_app/">アプリケーション関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_action/">アクション関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_entity/">エンティティ関連API</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ステート関連API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#api">API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_1">ステート取得API</a></li>
+                
+                    <li><a class="toctree-l4" href="#api_2">ステート登録API</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../api_log/">ログ関連API</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Rebotマニュアル</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>API（開発者用） &raquo;</li>
+        
+      
+    
+    <li>ステート関連API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="api">API</h1>
+<h2 id="api_1">ステート取得API</h2>
+<p>検索条件を指定して、{unique_id}で指定したアプリケーションのステート一覧の取得を行います。</p>
+<p><strong>■ エンドポイント</strong>    </p>
+<pre><code>/apps/{unique_id}/states
+</code></pre>
+<h3 id="_1">リクエスト</h3>
+<p><strong>■ リクエストメソッド </strong>  </p>
+<pre><code>GET
+</code></pre>
+<p><strong>■ リクエストパラメータ </strong></p>
+<table>
+<tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td>page</td><td></td><td>複数ページ存在する場合にページ番号を指定する<br/>デフォルトは1</td></tr>
+</table>
+
+<h3 id="_2">レスポンス</h3>
+<table>
+<tr><th colspan="3">項目</th><th>説明</th></tr>
+<tr><td colspan="3">last_page</td><td>ページ数</td></tr>
+<tr><td colspan="3">states</td><td>ステートのリスト</td></tr>
+<tr><td></td><td colspan="2">state</td><td>ステート名</td></tr>
+<tr><td></td><td colspan="2">in_condition_key</td><td>当ステートに入る為の条件（キー）<br/>(指定なし/action/postback)</td></tr>
+<tr><td></td><td colspan="2">in_condition_value</td><td>当ステートに入る為の条件（値）<br/>(例：キーに"action"を指定した場合はアクション名を設定する)</td></tr>
+<tr><td></td><td colspan="2">in_condition_state</td><td>当ステートに入ることができるステート<br/>(sys_any_state/sys_no_state/[作成したステート名])</td></tr>
+<tr><td></td><td colspan="2">out_state</td><td>当ステート完了時、次に遷移するステート名<br/>(sys_no_state/[作成したステート名])</td></tr>
+<tr><td></td><td colspan="2">state_type</td><td>ステートタイプ<br/>(form_filling(フォーム穴埋めタイプ)/api_call(API呼び出しタイプ)/mail_send(メール送信タイプ)/rtchat(有人チャット切替えタイプ))</td></tr>
+<tr><td></td><td colspan="2">responses</td><td>当ステートに関連する応答文のリスト</td></tr>
+<tr><td></td><td></td><td>response</td><td>応答文名</td></tr>
+<tr><td></td><td></td><td>response_text</td><td>応答文</td></tr>
+<tr><td></td><td></td><td>replies</td><td>応答文に返答用ボタンを表示する場合のボタン名のリスト</td></tr>
+</table>
+
+<p>以下の項目は"state_type"がform_fillingの場合のみ</p>
+<table>
+<tr><th colspan="4">項目</th><th>説明</th></tr>
+<tr><td></td><td colspan="3">is_confirm</td><td>フォーム完了時、確認メッセージを表示するかどうか<br/>(0(確認しない)/1(確認する))</td></tr>
+<tr><td></td><td colspan="3">forms</td><td>入力フォームのリスト</td></tr>
+<tr><td></td><td></td><td colspan="2">form_order</td><td>入力フォームの連番</td></tr>
+<tr><td></td><td></td><td colspan="2">form_name</td><td>フォーム項目名</td></tr>
+<tr><td></td><td></td><td colspan="2">form_value</td><td>当項目に設定するエンティティの名<br/>（どのような値でも良い時は"sys_any"を設定）</td></tr>
+<tr><td></td><td></td><td colspan="2">form_value_condition</td><td>当項目に設定するエンティティの条件</td></tr>
+<tr><td></td><td></td><td colspan="2">validations</td><td>当項目の入力チェックのリスト</td></tr>
+<tr><td></td><td></td><td></td><td>validation_type</td><td>"regex"（正規表現）固定</td></tr>
+<tr><td></td><td></td><td></td><td>validation_value</td><td>チェックする正規表現</td></tr>
+<tr><td></td><td></td><td colspan="2">responses</td><td>入力フォームに関連する応答文のリスト</td></tr>
+<tr><td></td><td></td><td></td><td>response</td><td>応答文名</td></tr>
+<tr><td></td><td></td><td></td><td>response_text</td><td>応答文</td></tr>
+<tr><td></td><td></td><td></td><td>replies</td><td>応答文に返答用ボタンを表示する場合のボタン名のリスト</td></tr>
+</table>
+
+<p>以下の項目は"state_type"がapi_callの場合のみ</p>
+<table>
+<tr><th colspan="2">項目</th><th>説明</th></tr>
+<tr><td></td><td>url</td><td>API呼び出しするURL</td></tr>
+<tr><td></td><td>method</td><td>API呼び出しするメソッド<br/>get/post</td></tr>
+<tr><td></td><td>content_type</td><td>API呼び出し時のCONTENT TYPE</td></tr>
+<tr><td></td><td>headers</td><td>API呼び出し時のリクエストヘッダ<br/>（"key1=val1;key2=val2;"の形式で作成）</td></tr>
+<tr><td></td><td>payload_type</td><td>API呼び出しに設定するパラメータのタイプ<br/>1: Key/Valueパラメータ形式<br/>2: JSON形式<br/>3: Rawデータ形式</td></tr>
+<tr><td></td><td>payload</td><td>API呼び出しに設定するパラメータ<br/>
+【パラメータタイプが1もしくは3の場合】<br/>
+"param_key1=param_val1&amp;param_key2=param_val2"の形式<br/>
+【パラメータタイプが2の場合】<br/>
+"{'param_key1':'param_val1','param_key2':'param_val2'}"のようなJSON形式</td></tr>
+</table>
+
+<p>以下の項目は"state_type"がmail_sendの場合のみ</p>
+<table>
+<tr><th colspan="2">項目</th><th>説明</th></tr>
+<tr><td></td><td>subject</td><td>メールタイトル</td></tr>
+<tr><td></td><td>body</td><td>メール本文</td></tr>
+<tr><td></td><td>to</td><td>送信先アドレス</td></tr>
+<tr><td></td><td>cc</td><td>CCアドレス</td></tr>
+<tr><td></td><td>bcc</td><td>BCCドレス</td></tr>
+</table>
+
+<hr />
+<h2 id="api_2">ステート登録API</h2>
+<p>以下のJSON形式のリストにてステートを受け取り、{unique_id}で指定したアプリケーションへステートの登録または更新を行います。</p>
+<p><strong>■ エンドポイント</strong>    </p>
+<pre><code>/apps/{unique_id}/states
+</code></pre>
+<h3 id="_3">リクエスト</h3>
+<p><strong>■ リクエストメソッド </strong>  </p>
+<pre><code>POST
+</code></pre>
+<p><strong>■ リクエストボディ </strong></p>
+<p>以下の値を持つJSONオブジェクトのリスト</p>
+<table>
+<tr><th colspan="2">パラメータ</th><th>必須</th><th>説明</th></tr>
+<tr><td colspan="2">update_type</td><td></td><td>更新タイプ<br/>1:新規追加（既にステート名が存在する場合はスキップ）<br/>
+                                                               3:置き換え（既にステート名が存在する場合は置き換え、存在しない場合は追加）<br/>
+                                                               4:削除（ステート名を指定して削除する）<br/>
+                                                               *何も指定しない場合は"3:置き換え"となる</td></tr>
+<tr><td colspan="2">state</td><td></td><td>ステート名<br/>指定されない場合は自動でステート名が採番される</td></tr>
+<tr><td colspan="2">in_condition_key</td><td></td><td>当ステートに入る為の条件（キー）<br/>(指定なし/action/postback)</td></tr>
+<tr><td colspan="2">in_condition_value</td><td></td><td>当ステートに入る為の条件（値）<br/>(例：キーに"action"を指定した場合はアクション名を設定する)</td></tr>
+<tr><td colspan="2">in_condition_state</td><td></td><td>当ステートに入ることができるステート<br/>(sys_any_state/sys_no_state/[作成したステート名])<br/>何も指定しない場合はsys_any_stateが設定される</td></tr>
+<tr><td colspan="2">out_state</td><td></td><td>当ステート完了時、次に遷移するステート名<br/>(sys_no_state/[作成したステート名])<br/>何も指定しない場合はsys_no_stateが設定される</td></tr>
+<tr><td colspan="2">state_type</td><td>◯</td><td>ステートタイプ<br/>(form_filling(フォーム穴埋めタイプ)/api_call(API呼び出しタイプ)/mail_send(メール送信タイプ)/rtchat(有人チャット切替えタイプ))</td></tr>
+<tr><td colspan="2">responses</td><td></td><td>当ステートに関連する応答文のリスト</td></tr>
+<tr><td></td><td>type</td><td>◯</td><td>応答文のタイプ<br/><br/>
+【ステートタイプがフォーム穴埋めタイプの場合】<br/>
+in:このステートに入った時の応答文<br/>
+out:このステートから出る時の応答文<br/>
+cancel:このステートがキャンセルされた時の応答文<br/>
+unknown:このステート内で理解できない発言がされた場合の応答文<br/>
+confirm:必要なフォームの入力が全て完了した際の確認メッセージ<br/>
+modify:確認メッセージに対して「いいえ」と入力された場合の応答文<br/><br/>
+【ステートタイプがAPI呼び出しタイプの場合】<br/>
+in:API呼び出し成功時の応答文<br/>
+error:API呼び出し失敗時の応答文<br/><br/>
+【ステートタイプがメール送信タイプの場合】<br/>
+in:このステートに入った時の応答文<br/><br/>
+【ステートタイプが有人チャット切替えタイプの場合】<br/>
+in:このステートに入った時の応答文<br/>
+cancel:対応時間外等により有人チャットに切替わらなかった場合の応答文
+</td></tr>
+<tr><td></td><td>response_text</td><td>◯</td><td>応答文</td></tr>
+<tr><td></td><td>replies</td><td></td><td>応答文に返答用ボタンを表示する場合のボタン名のリスト</td></tr>
+</table>
+
+<p>以下の項目は"state_type"がform_fillingの場合のみ</p>
+<table>
+<tr><th colspan="3">項目</th><th>必須</th><th>説明</th></tr>
+<tr><td colspan="3">is_confirm</td><td></td><td>フォーム完了時、確認メッセージを表示するかどうか<br/>(0(確認しない)/1(確認する))<br/>何も指定しない場合は、0が設定される</td></tr>
+<tr><td colspan="3">forms</td><td></td><td>入力フォームのリスト</td></tr>
+<tr><td></td><td colspan="2">form_name</td><td>◯</td><td>フォーム項目名</td></tr>
+<tr><td></td><td colspan="2">form_value</td><td></td><td>当項目に設定するエンティティの名<br/>（どのような値でも良い時は"sys_any"を設定）<br/>何も指定しない場合は、sys_anyが設定される</td></tr>
+<tr><td></td><td colspan="2">form_value_condition</td><td></td><td>当項目に設定するエンティティの条件</td></tr>
+<tr><td></td><td colspan="2">validations</td><td></td><td>当項目の入力チェックのリスト</td></tr>
+<tr><td></td><td></td><td>validation_type</td><td></td><td>"regex"（正規表現）固定</td></tr>
+<tr><td></td><td></td><td>validation_value</td><td></td><td>チェックする正規表現</td></tr>
+<tr><td></td><td colspan="2">responses</td><td></td><td>入力フォームに関連する応答文のリスト</td></tr>
+<tr><td></td><td></td><td>type</td><td></td><td>応答文のタイプ<br/>
+form_name:当項目を聞き出す為の応答文<br/>
+form_error:入力内容にエラーがある場合の応答文
+</td></tr>
+<tr><td></td><td></td><td>response_text</td><td></td><td>応答文</td></tr>
+<tr><td></td><td></td><td>replies</td><td></td><td>応答文に返答用ボタンを表示する場合のボタン名のリスト</td></tr>
+</table>
+
+<p>以下の項目は"state_type"がapi_callの場合のみ</p>
+<table>
+<tr><th>項目</th><th>必須</th><th>説明</th></tr>
+<tr><td>url</td><td>◯</td><td>API呼び出しするURL</td></tr>
+<tr><td>method</td><td></td><td>API呼び出しするメソッド<br/>get/post<br/>何も指定しない場合は、getが設定される</td></tr>
+<tr><td>content_type</td><td></td><td>API呼び出し時のCONTENT TYPE<br/>何も指定しない場合は、application/jsonが設定される</td></tr>
+<tr><td>headers</td><td></td><td>API呼び出し時のリクエストヘッダ<br/>（"key1=val1;key2=val2;"の形式で作成）</td></tr>
+<tr><td>payload_type</td><td></td><td>API呼び出しに設定するパラメータのタイプ<br/>1: Key/Valueパラメータ形式<br/>2: JSON形式<br/>3: Rawデータ形式</td></tr>
+<tr><td>payload</td><td></td><td>API呼び出しに設定するパラメータ<br/>
+【パラメータタイプが1もしくは3の場合】<br/>
+"param_key1=param_val1&amp;param_key2=param_val2"の形式<br/>
+【パラメータタイプが2の場合】<br/>
+"{'param_key1':'param_val1','param_key2':'param_val2'}"のようなJSON形式</td></tr>
+</table>
+
+<p>以下の項目は"state_type"がmail_sendの場合のみ</p>
+<table>
+<tr><th>項目</th><th>必須</th><th>説明</th></tr>
+<tr><td>subject</td><td></td><td>メールタイトル</td></tr>
+<tr><td>body</td><td></td><td>メール本文</td></tr>
+<tr><td>to</td><td>◯</td><td>送信先アドレス</td></tr>
+<tr><td>cc</td><td></td><td>CCアドレス</td></tr>
+<tr><td>bcc</td><td></td><td>BCCドレス</td></tr>
+</table>
+
+<p><strong>■ リクエストボディの例</strong>    </p>
+<pre><code>[
+  {
+    "update_type":"1", "state":"state1", "in_condition_key":"action","in_condition_value":"action1","state_type":"form_filling",
+    "responses":[
+      {"type":"in","response_text":"ステートに入りました"},
+      {"type":"out","response_text":"ステートを出ました","replies":["メニューに戻る"]},
+      {"type":"cancel","response_text":"ステートがキャンセルされました","replies":["メニューに戻る"]},
+      {"type":"unknown","response_text":"理解できませんでした"},
+      {"type":"confirm","response_text":"この内容でよろしいでしょうか？","replies":["はい","いいえ"]},
+      {"type":"modify","response_text":"了解しました"}
+      ],
+    "forms":[
+      {"form_name":"name","validations":[{"validation_type":"regex","validation_value":"[0-9]+"}],"responses":[{"type":"form_name","response_text":"名前を教えてください。"},{"type":"form_error","response_text":"入力内容に誤りがあります。"}]},
+      {"form_name":"product","form_value":"product","responses":[{"type":"form_name","response_text":"商品を選択してください。"}]}
+    ]
+  },
+  {"update_type":"1", "state":"state2","state_type":"api_call","url":"http://google.com","method":"post","content_type":"application/json","headers":"key1=val1;key2=val2;","payload_type":"1","payload":"param_key1=param_val1&amp;param_key2=param_val2",
+  "responses":[
+      {"type":"in","response_text":"ステートに入りました"},
+      {"type":"error","response_text":"エラーがありました","replies":["メニューに戻る"]}
+      ]
+  },
+  {"update_type":"1", "state":"state3","state_type":"mail_send","subject":"タイトル","body":"本文","to":"info@resola.ai",
+  "responses":[
+      {"type":"in","response_text":"ステートに入りました"}
+      ]
+  },
+  {"update_type":"3", "state_type":"rtchat",
+  "responses":[
+      {"type":"in","response_text":"オペレータにおつなぎします"},
+      {"type":"cancel","response_text":"時間外です"}
+      ]
+  },
+  {"update_type":"4", "action":"state5"}
+]
+</code></pre>
+<h3 id="_4">レスポンス</h3>
+<table>
+<tr><th>項目</th><th>説明</th></tr>
+<tr><td>updated</td><td>更新されたステートのリスト<br/>["state2", "state3", "state4"]</td></tr>
+<tr><td>deleted</td><td>削除されたステートのリスト<br/>["state5"]</td></tr>
+<tr><td>skipped</td><td>スキップされたステートのリスト<br/>["state1"]</td></tr>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api_log/" class="btn btn-neutral float-right" title="ログ関連API">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../api_entity/" class="btn btn-neutral" title="エンティティ関連API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../api_entity/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../api_log/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

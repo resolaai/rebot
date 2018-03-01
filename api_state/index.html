@@ -330,7 +330,7 @@
 in:このステートに入った時の応答文<br/>
 out:このステートから出る時の応答文<br/>
 cancel:このステートがキャンセルされた時の応答文<br/>
-unknown:このステート内で理解できない発言がされた場合の応答文<br/>
+unk:このステート内で理解できない発言がされた場合の応答文<br/>
 confirm:必要なフォームの入力が全て完了した際の確認メッセージ<br/>
 modify:確認メッセージに対して「いいえ」と入力された場合の応答文<br/><br/>
 【ステートタイプがAPI呼び出しタイプの場合】<br/>
@@ -359,7 +359,7 @@ cancel:対応時間外等により有人チャットに切替わらなかった�
 <tr><td></td><td></td><td>validation_value</td><td></td><td>チェックする正規表現</td></tr>
 <tr><td></td><td colspan="2">responses</td><td></td><td>入力フォームに関連する応答文のリスト</td></tr>
 <tr><td></td><td></td><td>type</td><td></td><td>応答文のタイプ<br/>
-form_name:当項目を聞き出す為の応答文<br/>
+form:当項目を聞き出す為の応答文<br/>
 formerror:入力内容にエラーがある場合の応答文
 </td></tr>
 <tr><td></td><td></td><td>response_text</td><td></td><td>応答文</td></tr>
@@ -399,13 +399,13 @@ formerror:入力内容にエラーがある場合の応答文
       {"type":"in","response_text":"ステートに入りました"},
       {"type":"out","response_text":"ステートを出ました","replies":["メニューに戻る"]},
       {"type":"cancel","response_text":"ステートがキャンセルされました","replies":["メニューに戻る"]},
-      {"type":"unknown","response_text":"理解できませんでした"},
+      {"type":"unk","response_text":"理解できませんでした"},
       {"type":"confirm","response_text":"この内容でよろしいでしょうか？","replies":["はい","いいえ"]},
       {"type":"modify","response_text":"了解しました"}
       ],
     "forms":[
-      {"form_name":"name","validations":[{"validation_type":"regex","validation_value":"[0-9]+"}],"responses":[{"type":"form_name","response_text":"名前を教えてください。"},{"type":"formerror","response_text":"入力内容に誤りがあります。"}]},
-      {"form_name":"product","form_value":"product","responses":[{"type":"form_name","response_text":"商品を選択してください。"}]}
+      {"form_name":"name","validations":[{"validation_type":"regex","validation_value":"[0-9]+"}],"responses":[{"type":"form","response_text":"名前を教えてください。"},{"type":"formerror","response_text":"入力内容に誤りがあります。"}]},
+      {"form_name":"product","form_value":"product","responses":[{"type":"form","response_text":"商品を選択してください。"}]}
     ]
   },
   {"update_type":"1", "state":"state2","state_type":"api_call","url":"http://google.com","method":"post","content_type":"application/json","headers":"key1=val1;key2=val2;","payload_type":"1","payload":"param_key1=param_val1&amp;param_key2=param_val2",

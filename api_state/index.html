@@ -404,7 +404,7 @@ formerror:入力内容にエラーがある場合の応答文
       {"type":"modify","response_text":"了解しました"}
       ],
     "forms":[
-      {"form_name":"name","validations":[{"validation_type":"regex","validation_value":"[0-9]+"}],"responses":[{"type":"form","response_text":"名前を教えてください。"},{"type":"formerror","response_text":"入力内容に誤りがあります。"}]},
+      {"form_name":"name","validations":[{"validation_type":"regex","validation_value":"(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$)"}],"responses":[{"type":"form","response_text":"名前を教えてください。"},{"type":"formerror","response_text":"入力内容に誤りがあります。"}]},
       {"form_name":"product","form_value":"product","responses":[{"type":"form","response_text":"商品を選択してください。"}]}
     ]
   },

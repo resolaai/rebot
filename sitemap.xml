@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>/rebot/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,7 +20,7 @@
     
     <url>
      <loc>/rebot_app/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -29,13 +29,13 @@
         
     <url>
      <loc>/rebot_action/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/rebot_action_response/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -44,7 +44,7 @@
     
     <url>
      <loc>/rebot_entity/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -53,13 +53,13 @@
         
     <url>
      <loc>/rebot_state/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/rebot_state_formfilling/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -68,7 +68,7 @@
     
     <url>
      <loc>/account/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -77,43 +77,43 @@
         
     <url>
      <loc>/api/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api_account/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api_app/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api_action/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api_entity/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api_state/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/api_log/</loc>
-     <lastmod>2018-03-01</lastmod>
+     <lastmod>2018-03-05</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

@@ -256,7 +256,7 @@
 <tr><td colspan="2">cid</td><td>企業ID</td></tr>
 <tr><td colspan="2">email</td><td>Eメールアドレス</td></tr>
 <tr><td colspan="2">is_active</td><td>当該ユーザが有効か無効化を表す</td></tr>
-<tr><td colspan="2">role</td><td>当該ユーザのロール<br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
+<tr><td colspan="2">role</td><td>当該ユーザのロールID</td></tr>
 <tr><td colspan="2">person_in_charge</td><td>ユーザ名</td></tr>
 <tr><td colspan="2">profile_image</td><td>ユーザのプロフィールイメージ</td></tr>
 <tr><td colspan="2">company_info</td><td>以下の会社情報を持つオブジェクト</td></tr>
@@ -285,7 +285,7 @@
 <tr><td colspan="2">cid</td><td>企業ID</td></tr>
 <tr><td colspan="2">email</td><td>Eメールアドレス</td></tr>
 <tr><td colspan="2">is_active</td><td>当該ユーザが有効か無効化を表す</td></tr>
-<tr><td colspan="2">role</td><td>当該ユーザのロール<br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
+<tr><td colspan="2">role</td><td>当該ユーザのロールID</td></tr>
 <tr><td colspan="2">person_in_charge</td><td>ユーザ名</td></tr>
 <tr><td colspan="2">profile_image</td><td>ユーザのプロフィールイメージ</td></tr>
 <tr><td colspan="2">company_info</td><td>以下の会社情報を持つオブジェクト</td></tr>
@@ -310,7 +310,7 @@
 <table>
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
 <tr><td>email</td><td>○</td><td>追加するアカウントのEmailアドレス</td></tr>
-<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">役割</a><br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
+<tr><td>role</td><td>○</td><td>追加するアカウントの<a href="/account/">ロールID</a></td></tr>
 <tr><td>company_name</td><td></td><td>新たな会社のアカウントとして作成する場合は、会社名を入力<br/>会社名が無い場合は、ログインユーザと同じ会社のユーザとなる。（新たな会社を作成できるのはスーパーユーザアカウントのみです。）</td></tr>
 <tr><td>is_rtchat_enabled</td><td></td><td>0: 有人チャットを許可しない場合<br/>1: 有人チャットを許可する場合</td></tr>
 <tr><td>app_num_limit</td><td></td><td>作成可能なアプリケーションの数を指定します。無制限の場合は0を指定します。</td></tr>
@@ -333,7 +333,7 @@
 <table>
 <tr><th>パラメータ</th><th>必須</th><th>説明</th></tr>
 <tr><td>email</td><td>○</td><td>更新するアカウントのEメールアドレス</td></tr>
-<tr><td>role</td><td></td><td>役割<br/>0: スーパーユーザ<br/>1: 管理者<br/>2: 一般</td></tr>
+<tr><td>role</td><td></td><td>ロールID</td></tr>
 <tr><td>person_in_charge</td><td></td><td>名前</td></tr>
 <tr><td>profile_image</td><td></td><td>プロフィールイメージ</td></tr>
 <tr><td>company_name</td><td></td><td>会社名<br/>（会社情報を更新できるのはスーパーユーザアカウントのみです。）</td></tr>
